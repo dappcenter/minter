@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>atoms / icon / 64px / fill / withdraw</title>
+    <desc>Created with Sketch.</desc>
+    <g id="atoms-/-icon-/-64px-/-fill-/-withdraw" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="atoms-/-spacing-/-boundingBox">
+            <rect id="boundingBox" x="0" y="0" width="64" height="64"></rect>
+        </g>
+        <path d="M28.5058999,0.5 L2,0.5 C1.17157288,0.5 0.5,1.17157288 0.5,2 L0.5,62 C0.5,62.8284271 1.17157288,63.5 2,63.5 L62,63.5 C62.8284271,63.5 63.5,62.8284271 63.5,62 L63.5,2 C63.5,1.17157288 62.8284271,0.5 62,0.5 L37.0506493,0.5 L37.0506493,29.3442521 C37.0507276,30.1526334 37.6769177,30.8010175 38.4404647,30.8010968 L46.6257177,30.8010968 L32.7257321,46.7624882 L18.9053399,30.8087404 L24.2668488,30.8087404 L27.10152,30.8087404 C27.8651191,30.8086611 28.4913091,30.160277 28.4913875,29.3516927 L28.5058999,0.5 Z" id="Combined-Shape" stroke="#F8931B" fill="#F4C14D" transform="translate(32.000000, 32.000000) scale(1, -1) translate(-32.000000, -32.000000) "></path>
+    </g>
+</svg>

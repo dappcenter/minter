@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>Send</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Send" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
+        <g transform="translate(0.000000, 8.000000)" fill-rule="nonzero" id="Path" stroke="#6D3AD3">
+            <polygon fill="#935DFF" points="34.5518369 34.4165762 23.8614693 46.08 28.3070812 29.44 34.56 34.4015618"></polygon>
+            <polygon fill="#935DFF" points="50.5800973 46.08 35.5207585 35.2257087 28.3070812 29.44 62.72 1.28"></polygon>
+            <polygon fill="#7E4EDC" points="62.72 1.28 28.3722939 30.1931887 23.8614693 46.08 20.48 25.441871"></polygon>
+            <polygon fill="#935DFF" points="20.5083468 25.6 1.28 17.605264 62.72 1.28"></polygon>
+        </g>
+    </g>
+</svg>
