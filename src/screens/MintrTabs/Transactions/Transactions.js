@@ -42,7 +42,7 @@ const stringifyQuery = query => {
 	}, '?'));
 };
 
-const getApiUrl = networkName => `http://localhost:8000/api`;
+const getApiUrl = networkName => `${process.env.GRAPH_API_URL}/api`;
 
 const hexifyAddress = walletAddress => window.tronWeb.address.toHex(walletAddress);
 
@@ -67,10 +67,8 @@ const useGetTransactions = (walletAddress, networkName) => {
 						})}`
 					),*/
 				]);
-				
-				const [transactions] = await Promise.all(
-					response.map(result => result.json())
-				);
+
+				const [transactions] = await Promise.all(response.map(result => result.json()));
 				const clearedDeposits = [];
 				//filtering out outgoing ClearedDeposits
 				const filteredTransactions = transactions

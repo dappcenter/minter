@@ -161,23 +161,21 @@ const ExpandableTable = ({ data }) => {
 	);
 };
 
-const getApiUrl = networkName =>
-		`http://localhost:8000/api`;
-		//`https://${networkName === 'mainnet' ? '' : networkName + '.'}api.synthetix.io/api`;
-const hexifyAddress = (walletAddress)  => 
-		window.tronWeb.address.toHex(walletAddress);
+const getApiUrl = networkName => `${process.env.GRAPH_API_URL}/api`;
+//`https://${networkName === 'mainnet' ? '' : networkName + '.'}api.synthetix.io/api`;
+const hexifyAddress = walletAddress => window.tronWeb.address.toHex(walletAddress);
 
 const useGetDepotEvents = (walletAddress, networkName) => {
-	const [data, setData] = useState({}); 
+	const [data, setData] = useState({});
 	useEffect(() => {
 		const getDepotEvents = async () => {
 			try {
 				setData({ loadingEvents: true });
 				const results = await Promise.all([
 					fetch(
-						`${getApiUrl(
-							networkName
-						)}/blockchainEventsFiltered?fromAddress=${hexifyAddress(walletAddress)}&eventName=SynthDeposit`
+						`${getApiUrl(networkName)}/blockchainEventsFiltered?fromAddress=${hexifyAddress(
+							walletAddress
+						)}&eventName=SynthDeposit`
 					),
 					/*fetch(
 						`${getApiUrl(
@@ -185,9 +183,9 @@ const useGetDepotEvents = (walletAddress, networkName) => {
 						)}/blockchainEventsFiltered?toAddress=${hexifyAddress(walletAddress)}&eventName=ClearedDeposit`
 					),*/
 					fetch(
-						`${getApiUrl(
-							networkName
-						)}/blockchainEventsFiltered?fromAddress=${hexifyAddress(walletAddress)}&eventName=SynthDepositRemoved`
+						`${getApiUrl(networkName)}/blockchainEventsFiltered?fromAddress=${hexifyAddress(
+							walletAddress
+						)}&eventName=SynthDepositRemoved`
 					),
 				]);
 
@@ -198,21 +196,18 @@ const useGetDepotEvents = (walletAddress, networkName) => {
 				//console.log("depositsMade", depositsMade,"depositsCleared", depositsCleared, "depositsRemoved", depositsRemoved)
 
 				const totalDepositsMade = sumBy(depositsMade, 'value');
-				const totalDepositsCleared = 0;//sumBy(depositsCleared, 'toAmount');
+				const totalDepositsCleared = 0; //sumBy(depositsCleared, 'toAmount');
 				const totalDepositsRemoved = sumBy(depositsRemoved, 'value');
 
-
-				console.log("depositsMade", depositsMade)
-
+				console.log('depositsMade', depositsMade);
 
 				const depositsMadeFiltered = depositsMade
 					.filter(depositMade => {
 						return !depositsRemoved.find(
 							depositRemoved => depositRemoved.depositIndex === depositMade.depositIndex
 						);
-					}) 
+					})
 					.map(deposit => {
-						
 						let remaining = deposit.value;
 						let details = depositsCleared
 							.filter(d => d.depositIndex === deposit.depositIndex)
@@ -233,7 +228,12 @@ const useGetDepotEvents = (walletAddress, networkName) => {
 						};
 					});
 
-					console.log("values",{totalDepositsMade, totalDepositsCleared, totalDepositsRemoved, depositsMadeFiltered});
+				console.log('values', {
+					totalDepositsMade,
+					totalDepositsCleared,
+					totalDepositsRemoved,
+					depositsMadeFiltered,
+				});
 
 				setData({
 					loadingEvents: false,
@@ -262,7 +262,7 @@ const useGetDepotData = walletAddress => {
 					snxJSConnector.snxJS.Depot.totalSellableDeposits(),
 					snxJSConnector.snxJS.Depot.minimumDepositAmount(),
 					snxJSConnector.snxJS.sUSD.balanceOf(walletAddress),
-				]); 
+				]);
 
 				//console.log("useGetDepotData results", results)
 				const [totalSellableDeposits, minimumDepositAmount, sUSDBalance] = results.map(
@@ -296,8 +296,7 @@ const buttonLabelMapper = label => {
 			return '';
 	}
 };
-const base58address = (walletAddress)  =>
-		window.tronWeb.address.fromHex(walletAddress);
+const base58address = walletAddress => window.tronWeb.address.fromHex(walletAddress);
 
 const Depot = ({ t }) => {
 	const [currentScenario, setCurrentScenario] = useState(initialScenario);
@@ -310,7 +309,7 @@ const Depot = ({ t }) => {
 	const { totalSellableDeposits, sUSDBalance, loadingData, minimumDepositAmount } = useGetDepotData(
 		currentWallet
 	);
- 	const { amountAvailable, depositsMade, loadingEvents } = useGetDepotEvents(
+	const { amountAvailable, depositsMade, loadingEvents } = useGetDepotEvents(
 		currentWallet,
 		networkName
 	);
