@@ -1,8 +1,8 @@
 [![Twitter Follow](https://img.shields.io/twitter/follow/oikos_cash.svg?label=oikos_cash&style=social)](https://twitter.com/oikos_cash)
 
-# Mintr v2
+# Mint
 
-This is the code for the new Oikos Mintr dApp: https://mint.oikos.cash.
+This is the code for the new Oikos Mint dApp: https://mint.oikos.cash.
 
 For translator instructions, [go here](#translator-instructions).
 
@@ -12,16 +12,11 @@ The dApp communicates with the Oikos contracts, allowing users to perform the fo
 - Claim rewards of both `OKS` (inflation) and `sUSD` (exchange fees) every week
 - Burn `sUSD` to unlock `OKS`
 - Transfer `OKS` to other accounts
-- Deposit (or withdrawl) `sUSD` into the `Depot` contract, to go in the queue for exchanging with `ETH` at current market price
+- Deposit (or withdrawl) `sUSD` into the `Depot` contract, to go in the queue for exchanging with `TRX` at current market price
 
-Mintr v2 supports the following wallet providers:
+Mint supports the following wallet providers:
 
-- Metamask
-- Trezor
-- Ledger
-- Coinbase Wallet
-
-![mintrv2](https://user-images.githubusercontent.com/799038/67426237-aa7a5c00-f5a7-11e9-96a6-1d721f3c58ba.gif)
+- TronLink
 
 ---
 
