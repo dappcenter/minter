@@ -23,7 +23,9 @@ const useGetBalances = (walletAddress, setCurrentCurrency) => {
 					snxJSConnector.snxJS.Synthetix.transferableSynthetix(walletAddress),
 					snxJSConnector.provider.getBalance(walletAddress),
 				]);
-				let readableTrxBalance = window.tronWeb.fromSun(window.tronWeb.BigNumber(trxBalance._hex).toString());
+				let readableTrxBalance = window.tronWeb.fromSun(
+					window.tronWeb.BigNumber(trxBalance._hex).toString()
+				);
 				let walletBalances = [
 					{
 						name: 'OKS',
@@ -36,13 +38,12 @@ const useGetBalances = (walletAddress, setCurrentCurrency) => {
 						rawBalance: trxBalance,
 					},
 				];
- 
 
 				const synthList = snxJSConnector.synths
 					.filter(({ asset }) => asset)
 					.map(({ name }) => name)
-					.filter((name) => {
-						return name !== "sBTT" && name !== "iBTT"
+					.filter(name => {
+						return name !== 'sBTT' && name !== 'iBTT';
 					});
 
 				const balanceResults = await Promise.all(
@@ -63,7 +64,7 @@ const useGetBalances = (walletAddress, setCurrentCurrency) => {
 			} catch (e) {
 				console.log(e);
 			}
-		}; 
+		};
 		getBalances();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [walletAddress]);
@@ -96,7 +97,7 @@ const useGetGasEstimate = (currency, amount, destination) => {
 					//	to: destination,
 					//});
 				} else {
-					gasEstimate = 0;// await snxJSConnector.snxJS[currency.name].contract.estimate.transfer(
+					gasEstimate = 0; // await snxJSConnector.snxJS[currency.name].contract.estimate.transfer(
 					//	destination,
 					//	amountBN
 					//);
@@ -115,21 +116,27 @@ const useGetGasEstimate = (currency, amount, destination) => {
 };
 
 const sendTransaction = async (currency, amount, destination, settings) => {
+	const sunDecimals = 6;
 	if (!currency) return null;
 	if (currency === 'OKS') {
-		console.log("signerObject", snxJSConnector.signer );
+		console.log('signerObject', snxJSConnector.signer);
 
-		const txHash = await snxJSConnector.snxJS.Synthetix.contract.transfer(destination, amount).send(settings);
+		const txHash = await snxJSConnector.snxJS.Synthetix.contract
+			.transfer(destination, amount)
+			.send(settings);
 		return { hash: txHash };
-	} else if (currency === 'ETH') {
-		//return snxJSConnector.signer.sendTransaction({
-		//	value: amount,
-		//	to: destination,
-		//	...settings,
-		//});
-		console.log("not implemented");
-		
-	} else return snxJSConnector.snxJS[currency].contract.transfer(destination, amount).send(settings);
+	} else if (currency === 'TRX') {
+		const res = await window.tronWeb.transactionBuilder.sendTrx(
+			destination,
+			Number(amount) / (10 ** (18- sunDecimals)),
+			window.tronWeb.defaultAddress.base58
+		);
+		const signedTransaction = await window.tronWeb.trx.sign(res);	
+		const obj = await window.tronWeb.trx.sendRawTransaction(signedTransaction); // error
+		console.log(obj.transaction.txID);
+		return { hash: obj.transaction.txID };
+	} else
+		return snxJSConnector.snxJS[currency].contract.transfer(destination, amount).send(settings);
 };
 
 const Send = ({ onDestroy }) => {
@@ -153,7 +160,6 @@ const Send = ({ onDestroy }) => {
 
 	const onSend = async () => {
 		try {
-
 			const realSendAmount =
 				sendAmount === currentCurrency.balance
 					? currentCurrency.rawBalance
@@ -167,7 +173,7 @@ const Send = ({ onDestroy }) => {
 				{ gasPrice: gasPrice * GWEI_UNIT, gasLimit }
 			);
 
-			console.log("got tx", transaction);
+			//console.log('got tx', transaction);
 
 			if (transaction) {
 				setTransactionInfo({ transactionHash: transaction.hash });
@@ -190,7 +196,7 @@ const Send = ({ onDestroy }) => {
 			console.log(errorMessage);
 			setTransactionInfo({
 				...transactionInfo,
-				transactionError: errorMessage,
+				transactionError: e,
 			});
 			handleNext(2);
 		}
