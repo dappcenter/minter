@@ -388,7 +388,7 @@
 			"cancel": "取消",
 			"back": "后退",
 			"close": "关闭",
-			"trxerscan": "在 Etherscan 上查看",
+			"etherscan": "在 Tronscan 上查看",
 			"view": "查看",
 			"finish": "完成并返回",
 			"ok": "好"

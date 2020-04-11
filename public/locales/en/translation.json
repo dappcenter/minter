@@ -394,7 +394,7 @@
 			"cancel": "Cancel",
 			"back": "Go back",
 			"close": "Close",
-			"trxerscan": "View on Etherscan",
+			"etherscan": "View on Tronscan",
 			"view": "View",
 			"finish": "Finish & return home",
 			"ok": "OK"

@@ -390,7 +390,7 @@
 			"cancel": "Cancelar",
 			"back": "Regresar",
 			"close": "Cerrar",
-			"trxerscan": "Ver en Etherscan",
+			"etherscan": "Ver en Tronscan",
 			"view": "Ver",
 			"finish": "Finalizar y volver a inicio",
 			"ok": "OK"

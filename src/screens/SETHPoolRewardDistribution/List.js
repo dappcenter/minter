@@ -62,7 +62,7 @@ const CompletedList = ({ transactions, networkName }) => (
 		header={[
 			{ key: 'id', value: 'ID' },
 			{ key: 'completed', value: 'completed' },
-			{ key: 'view', value: 'view on etherscan' },
+			{ key: 'view', value: 'view on Tronscan' },
 		]}
 		data={transactions.map(item => {
 			return {
