@@ -122,10 +122,10 @@ const WalletButtons = () => {
 		<Wallets>
 			<PMega m={'10px 0 20px 0'}>{t('onboarding.walletConnection.title')}</PMega>
 			{SUPPORTED_WALLETS.map(wallet => {
-				const noMetamask = wallet === 'TronLink' && !hasTronLink();
+				const noTronLink = wallet === 'TronLink' && !hasTronLink();
 				return (
 					<Button
-						disabled={noMetamask || !window.tronWeb.defaultAddress.hex} 
+						disabled={noTronLink || !window.tronWeb.defaultAddress.hex} 
 						key={wallet}
 						onClick={onWalletClick({ wallet, derivationPath }, dispatch)}
 					>
