@@ -9,9 +9,8 @@ let snxJSConnector = {
 		contractSettings.tronWeb = window.tronWeb;
 		this.snxJS = new SynthetixJs(contractSettings);
 		this.synths = this.snxJS.contractSettings.synths;
-		console.log('signer', this.snxJS);
 		this.signer = this.snxJS.contractSettings.signer;
-		this.provider = typeof this.signer !== undefined ? this.signer.provider : null;
+		this.provider = this.signer.provider;
 		this.utils = this.snxJS.utils;
 		this.ethersUtils = this.snxJS.ethers.utils;
 		//this.uniswapContract = window.tronWeb.contract().at(uniswap.address); //new ethers.Contract(uniswap.address, uniswap.abi, this.signer);

@@ -24,6 +24,8 @@ import './carousel.css';
 
 const SLIDE_COUNT = 4;
 
+console.log(snxJSConnector);
+
 const onWalletClick = ({ wallet, derivationPath }, dispatch) => {
 	return async () => {
 		const walletStatus = await connectToWallet({ wallet, derivationPath });
@@ -123,7 +125,7 @@ const WalletButtons = () => {
 				const noMetamask = wallet === 'TronLink' && !hasTronLink();
 				return (
 					<Button
-						disabled={noMetamask}
+						disabled={noMetamask || !window.tronWeb.defaultAddress.hex} 
 						key={wallet}
 						onClick={onWalletClick({ wallet, derivationPath }, dispatch)}
 					>
