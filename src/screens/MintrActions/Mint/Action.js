@@ -25,7 +25,7 @@ const Action = ({
 	oksBalance,
 }) => {
  
-	console.log("OKSPrice", OKSPrice)
+	//console.log("OKSPrice", OKSPrice)
 	return (
 		<SlidePage>
 			<Container>
@@ -83,6 +83,7 @@ const Action = ({
 						 
 						onClick={onMint}
 						margin="auto"
+						disabled={(issuableSynths < Number(mintAmount) )}
 					>
 						{t('mintrActions.mint.action.buttons.mint')}
 					</ButtonPrimary>

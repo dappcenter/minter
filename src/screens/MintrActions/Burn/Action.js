@@ -85,6 +85,7 @@ const Action = ({
 					<ButtonPrimary
 						onClick={onBurn}
 						margin="auto"
+						disabled={(maxBurnAmount < Number(burnAmount) )}
 					>
 						{t('mintrActions.burn.action.buttons.burn')}
 					</ButtonPrimary>
