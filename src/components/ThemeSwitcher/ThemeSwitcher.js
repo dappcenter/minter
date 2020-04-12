@@ -32,6 +32,7 @@ const ThemeSwitcher = () => {
 			onColor={theme.colorStyles.themeToggleBackgroundColor}
 			onHandleColor={theme.colorStyles.themeToggleHandleColor}
 			offHandleColor={theme.colorStyles.themeToggleHandleColor}
+			disabled={true}
 		/>
 	);
 };

@@ -8,7 +8,7 @@ import './i18n';
 
 const initialState = {
 	ui: {
-		themeIsDark: localStorage.getItem('dark') === 'true' || false,
+		themeIsDark: true,//localStorage.getItem('dark') === 'true' || false,
 		currentPage: 'landing',
 		currentTab: 'home',
 		transactionSettingsPopupIsVisible: false,

@@ -45,15 +45,17 @@ const Header = ({ t, currentWallet }) => {
 						position={{ left: 0 }}
 					/>
 				</LanguageButtonWrapper>
-				<ThemeSwitcher
-					onLabel={t('dashboard.header.onLabel')}
-					offLabel={t('dashboard.header.offLabel')}
-				/>
+
 			</HeaderBlock>
 		</HeaderWrapper>
 	);
 };
-
+/*
+				<ThemeSwitcher
+					onLabel={t('dashboard.header.onLabel')}
+					offLabel={t('dashboard.header.offLabel')}
+				/>
+				*/
 const HeaderWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
