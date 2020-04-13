@@ -2,8 +2,8 @@
 	"onboarding": {
 		"slides": {
 			"welcome": {
-				"title": "¡Bienvenido a Minter!",
-				"description": "Minter es la dApp para los titulares de OKS. Si nunca ha usado Minter antes, lea primero nuestra rápida introducción."
+				"title": "¡Bienvenido a Mintr!",
+				"description": "Mintr es la dApp para los titulares de OKS. Si nunca ha usado Mintr antes, lea primero nuestra rápida introducción."
 			},
 			"whatIsSynthetix": {
 				"title": "¿Qué es Synthetix?",
@@ -28,7 +28,7 @@
 		"walletSelection": {
 			"success": {
 				"title": "Seleccionar billetera",
-				"subtitle": "Por favor seleccione la billetera que le gustaría usar con Minter"
+				"subtitle": "Por favor seleccione la billetera que le gustaría usar con Mintr"
 			},
 			"loading": {
 				"connectInstructions": "Siga las instrucciones en su dispositivo para desbloquear su billetera.",
@@ -36,7 +36,7 @@
 			},
 			"error": {
 				"title": "Error",
-				"subtitle": "Minter no pudo acceder a su billetera.",
+				"subtitle": "Mintr no pudo acceder a su billetera.",
 				"retry": "Reintentar"
 			}
 		}
@@ -113,7 +113,7 @@
 			}
 		}
 	},
-	"MinterActions": {
+	"mintrActions": {
 		"mint": {
 			"action": {
 				"title": "Acuñar",
@@ -418,11 +418,11 @@
 		"speed": "Velocidad de transacción estimada:"
 	},
 	"maintenance": {
-		"title": "Minter no está disponible actualmente debido a actualizaciones.",
+		"title": "Mintr no está disponible actualmente debido a actualizaciones.",
 		"subtitle": "Disculpe las molestias, volverá en breve."
 	},
 	"mobileLanding": {
-		"title": "Minter no está disponible actualmente para dispositivos móviles y tabletas.",
+		"title": "Mintr no está disponible actualmente para dispositivos móviles y tabletas.",
 		"subtitle": "Esperamos tener una versión móvil disponible en los próximos meses."
 	},
 	"tooltip": {

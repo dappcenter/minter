@@ -3,7 +3,7 @@
 		"slides": {
 			"welcome": {
 				"title": "Welcome to Oikos Minter!",
-				"description": "Minter is the dApp for OKS holders. If you've never used Minter before, read through our quick introduction first."
+				"description": "Mintr is the dApp for OKS holders. If you've never used Mintr before, read through our quick introduction first."
 			},
 			"whatIsOikos": {
 				"title": "What is Oikos?",
@@ -28,7 +28,7 @@
 		"walletSelection": {
 			"success": {
 				"title": "Select Wallet",
-				"subtitle": "Please select the wallet you would like to use with Minter"
+				"subtitle": "Please select the wallet you would like to use with Mintr"
 			},
 			"loading": {
 				"connectInstructions": "Please follow the prompts on your device to unlock your wallet.",
@@ -36,7 +36,7 @@
 			},
 			"error": {
 				"title": "Error",
-				"subtitle": "Minter couldn't access your wallet.",
+				"subtitle": "Mintr couldn't access your wallet.",
 				"retry": "Retry"
 			},
 			"addWallet":{
@@ -116,7 +116,7 @@
 			}
 		}
 	},
-	"MinterActions": {
+	"mintrActions": {
 		"mint": {
 			"action": {
 				"title": "Mint",
@@ -423,11 +423,11 @@
 		"speed": "Estimated transaction speed:"
 	},
 	"maintenance": {
-		"title": "Minter is currently unavailable due to upgrades.",
+		"title": "Mintr is currently unavailable due to upgrades.",
 		"subtitle": "Sorry for the inconvenience, it will be back shortly."
 	},
 	"mobileLanding": {
-		"title": "Minter is currently unavailable for mobile and tablet.",
+		"title": "Mintr is currently unavailable for mobile and tablet.",
 		"subtitle": "We hope to have a mobile version available in the next few months."
 	},
 	"tooltip": {
