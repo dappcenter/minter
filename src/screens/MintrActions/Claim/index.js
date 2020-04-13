@@ -31,11 +31,6 @@ const getFeePeriodCountdown = (periodIndex, recentFeePeriods, feePeriodDuration)
 	return `${formatDistanceToNow(currentPeriodEnd)} left`;
 };
 
-const bn = (obj) => {
-	console.log('formatting', {obj})
-	return bigNumberFormatter(obj._hex);
-}
-
 const useGetFeeData = walletAddress => {
 	const [data, setData] = useState({});
 	useEffect(() => {
@@ -44,7 +39,14 @@ const useGetFeeData = walletAddress => {
 			const sUSDBytes = bytesFormatter('sUSD');
 			try {
 				setData({ ...data, dataIsLoading: true });
-				const results = await Promise.all([
+				const [
+					feesByPeriod,
+					feePeriodDuration,
+					recentFeePeriods,
+					feesAreClaimable,
+					feesAvailable,
+					xdrRate,
+				] = await Promise.all([
 					snxJSConnector.snxJS.FeePool.feesByPeriod(walletAddress),
 					snxJSConnector.snxJS.FeePool.feePeriodDuration(),
 					Promise.all(
@@ -56,33 +58,19 @@ const useGetFeeData = walletAddress => {
 					snxJSConnector.snxJS.FeePool.feesAvailable(walletAddress, sUSDBytes),
 					snxJSConnector.snxJS.ExchangeRates.rateForCurrency(xdrBytes),
 				]);
-				console.log({results});
-				const [
-					feesByPeriod,
-					feePeriodDuration,
-					recentFeePeriods,
-					feesAreClaimable,
-					feesAvailable,
-					xdrRate,
-				] = results;
-
-				const formattedXdrRate = bn(xdrRate);
-
-				console.log("got feesByPeriod", feesByPeriod.results, formattedXdrRate); 
-
+				const formattedXdrRate = bigNumberFormatter(xdrRate);
+				console.log("got feesByPeriod", feesByPeriod.results);
 				const formattedFeesByPeriod = feesByPeriod.results.slice(1).map(([fee, reward], i) => {
 					return {
-						fee: bn(fee) * formattedXdrRate,
-						reward: bn(reward),
+						fee: bigNumberFormatter(fee) * formattedXdrRate,
+						reward: bigNumberFormatter(reward),
 						closeIn: getFeePeriodCountdown(i, recentFeePeriods, feePeriodDuration),
 					};
 				});
-
-				console.log(formattedFeesByPeriod)
 				setData({
 					feesByPeriod: formattedFeesByPeriod,
 					feesAreClaimable,
-					feesAvailable: feesAvailable.map(bn),
+					feesAvailable: feesAvailable.map(bigNumberFormatter),
 					dataIsLoading: false,
 				});
 			} catch (e) {

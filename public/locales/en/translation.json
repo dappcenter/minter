@@ -7,7 +7,7 @@
 			},
 			"whatIsOikos": {
 				"title": "What is Oikos?",
-				"description": "Oikos is a decentralised synthetic asset issuance protocol built on Tron. These synthetic assets (Synths) are created by staking the Oikos Network Token (OKS), and these Synths can be exchanged for each other directly with the Oikos smart contracts on Oikos.exchange."
+				"description": "Oikos is a decentralised synthetic asset issuance protocol built on Ethereum. These synthetic assets (Synths) are created by staking the Oikos Network Token (OKS), and these Synths can be exchanged for each other directly with the Oikos smart contracts on Oikos.exchange."
 			},
 			"whyStakeSnx": {
 				"title": "Why stake OKS?",
@@ -85,8 +85,7 @@
 			"home": "Home",
 			"depot": "Depot",
 			"transactionsHistory": "Transactions",
-			"escrow": "Escrow",
-			"unipool": "UniPool"			
+			"escrow": "Escrow"
 		}
 	},
 	"home": {
@@ -343,7 +342,7 @@
 		}
 	},
 	"transactionSettings": {
-		"priceIndicator": "Tron network fees:",
+		"priceIndicator": "Ethereum network fees:",
 		"title": "Set gas price",
 		"subtitle": "Adjust the gas price (GWEI) below to set the transaction speed.",
 		"minutes": "mins",
@@ -363,7 +362,7 @@
 			"loading": "Waiting for user response..."
 		},
 		"complete": {
-			"subtitle": "Your transaction has been broadcast to the Tron network. You may close this window as the transaction will complete in the background."
+			"subtitle": "Your transaction has been broadcast to the Ethereum network. You may close this window as the transaction will complete in the background."
 		},
 		"error": {
 			"title": "Something went wrong...",
@@ -418,7 +417,7 @@
 		"noData": "No data"
 	},
 	"network": {
-		"gas": "Tron network fees (Gas):",
+		"gas": "Ethereum network fees (Gas):",
 		"tradingFee": "Synth exchange fee:",
 		"speed": "Estimated transaction speed:"
 	},
