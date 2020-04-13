@@ -3,11 +3,11 @@
 		"slides": {
 			"welcome": {
 				"title": "Welcome to Oikos Minter!",
-				"description": "Mintr is the dApp for OKS holders. If you've never used Mintr before, read through our quick introduction first."
+				"description": "Minter is the dApp for OKS holders. If you've never used Minter before, read through our quick introduction first."
 			},
 			"whatIsOikos": {
 				"title": "What is Oikos?",
-				"description": "Oikos is a decentralised synthetic asset issuance protocol built on Ethereum. These synthetic assets (Synths) are created by staking the Oikos Network Token (OKS), and these Synths can be exchanged for each other directly with the Oikos smart contracts on Oikos.exchange."
+				"description": "Oikos is a decentralised synthetic asset issuance protocol built on Tron. These synthetic assets (Synths) are created by staking the Oikos Network Token (OKS), and these Synths can be exchanged for each other directly with the Oikos smart contracts on Oikos.exchange."
 			},
 			"whyStakeSnx": {
 				"title": "Why stake OKS?",
@@ -28,7 +28,7 @@
 		"walletSelection": {
 			"success": {
 				"title": "Select Wallet",
-				"subtitle": "Please select the wallet you would like to use with Mintr"
+				"subtitle": "Please select the wallet you would like to use with Minter"
 			},
 			"loading": {
 				"connectInstructions": "Please follow the prompts on your device to unlock your wallet.",
@@ -36,7 +36,7 @@
 			},
 			"error": {
 				"title": "Error",
-				"subtitle": "Mintr couldn't access your wallet.",
+				"subtitle": "Minter couldn't access your wallet.",
 				"retry": "Retry"
 			},
 			"addWallet":{
@@ -115,7 +115,7 @@
 			}
 		}
 	},
-	"mintrActions": {
+	"MinterActions": {
 		"mint": {
 			"action": {
 				"title": "Mint",
@@ -342,7 +342,7 @@
 		}
 	},
 	"transactionSettings": {
-		"priceIndicator": "Ethereum network fees:",
+		"priceIndicator": "Tron network fees:",
 		"title": "Set gas price",
 		"subtitle": "Adjust the gas price (GWEI) below to set the transaction speed.",
 		"minutes": "mins",
@@ -362,7 +362,7 @@
 			"loading": "Waiting for user response..."
 		},
 		"complete": {
-			"subtitle": "Your transaction has been broadcast to the Ethereum network. You may close this window as the transaction will complete in the background."
+			"subtitle": "Your transaction has been broadcast to the Tron network. You may close this window as the transaction will complete in the background."
 		},
 		"error": {
 			"title": "Something went wrong...",
@@ -417,16 +417,16 @@
 		"noData": "No data"
 	},
 	"network": {
-		"gas": "Ethereum network fees (Gas):",
+		"gas": "Tron network fees (Gas):",
 		"tradingFee": "Synth exchange fee:",
 		"speed": "Estimated transaction speed:"
 	},
 	"maintenance": {
-		"title": "Mintr is currently unavailable due to upgrades.",
+		"title": "Minter is currently unavailable due to upgrades.",
 		"subtitle": "Sorry for the inconvenience, it will be back shortly."
 	},
 	"mobileLanding": {
-		"title": "Mintr is currently unavailable for mobile and tablet.",
+		"title": "Minter is currently unavailable for mobile and tablet.",
 		"subtitle": "We hope to have a mobile version available in the next few months."
 	},
 	"tooltip": {

@@ -2,12 +2,12 @@
 	"onboarding": {
 		"slides": {
 			"welcome": {
-				"title": "¡Bienvenido a Mintr!",
-				"description": "Mintr es la dApp para los titulares de OKS. Si nunca ha usado Mintr antes, lea primero nuestra rápida introducción."
+				"title": "¡Bienvenido a Minter!",
+				"description": "Minter es la dApp para los titulares de OKS. Si nunca ha usado Minter antes, lea primero nuestra rápida introducción."
 			},
 			"whatIsSynthetix": {
 				"title": "¿Qué es Synthetix?",
-				"description": "Synthetix es un protocolo descentralizado de emisión de activos sintéticos construido sobre Ethereum. Estos activos sintéticos (Synths) se crean al invertir el Synthetix Network Token (OKS), y estos Synths pueden intercambiarse entre sí directamente con los contratos inteligentes de Synthetix en Oikos.exchange."
+				"description": "Synthetix es un protocolo descentralizado de emisión de activos sintéticos construido sobre Tron. Estos activos sintéticos (Synths) se crean al invertir el Synthetix Network Token (OKS), y estos Synths pueden intercambiarse entre sí directamente con los contratos inteligentes de Synthetix en Oikos.exchange."
 			},
 			"whyStakeSnx": {
 				"title": "¿Por qué invertir en OKS?",
@@ -28,7 +28,7 @@
 		"walletSelection": {
 			"success": {
 				"title": "Seleccionar billetera",
-				"subtitle": "Por favor seleccione la billetera que le gustaría usar con Mintr"
+				"subtitle": "Por favor seleccione la billetera que le gustaría usar con Minter"
 			},
 			"loading": {
 				"connectInstructions": "Siga las instrucciones en su dispositivo para desbloquear su billetera.",
@@ -36,7 +36,7 @@
 			},
 			"error": {
 				"title": "Error",
-				"subtitle": "Mintr no pudo acceder a su billetera.",
+				"subtitle": "Minter no pudo acceder a su billetera.",
 				"retry": "Reintentar"
 			}
 		}
@@ -113,7 +113,7 @@
 			}
 		}
 	},
-	"mintrActions": {
+	"MinterActions": {
 		"mint": {
 			"action": {
 				"title": "Acuñar",
@@ -338,7 +338,7 @@
 		}
 	},
 	"transactionSettings": {
-		"priceIndicator": "Comisiones de la red Ethereum:",
+		"priceIndicator": "Comisiones de la red Tron:",
 		"title": "Configurar el precio del gas",
 		"subtitle": "Ajuste el precio del gas (GWEI) a continuación para establecer la velocidad de la transacción.",
 		"minutes": "min",
@@ -358,7 +358,7 @@
 			"loading": "Esperando respuesta del usuario..."
 		},
 		"complete": {
-			"subtitle": "Su transacción ha sido transmitida a la red Ethereum. Puede cerrar esta ventana ya que la transacción se completará en segundo plano."
+			"subtitle": "Su transacción ha sido transmitida a la red Tron. Puede cerrar esta ventana ya que la transacción se completará en segundo plano."
 		},
 		"error": {
 			"title": "Algo salió mal...",
@@ -413,16 +413,16 @@
 		"noData": "Sin datos"
 	},
 	"network": {
-		"gas": "Comisión de la red Ethereum (Gas):",
+		"gas": "Comisión de la red Tron (Gas):",
 		"tradingFee": "Comisión del mercado de intercambio Synth:",
 		"speed": "Velocidad de transacción estimada:"
 	},
 	"maintenance": {
-		"title": "Mintr no está disponible actualmente debido a actualizaciones.",
+		"title": "Minter no está disponible actualmente debido a actualizaciones.",
 		"subtitle": "Disculpe las molestias, volverá en breve."
 	},
 	"mobileLanding": {
-		"title": "Mintr no está disponible actualmente para dispositivos móviles y tabletas.",
+		"title": "Minter no está disponible actualmente para dispositivos móviles y tabletas.",
 		"subtitle": "Esperamos tener una versión móvil disponible en los próximos meses."
 	},
 	"tooltip": {

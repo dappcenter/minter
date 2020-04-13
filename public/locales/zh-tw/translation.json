@@ -2,8 +2,8 @@
 	"onboarding": {
 		"slides": {
 			"welcome": {
-				"title": "歡迎使用 Mintr!",
-				"description": "Mintr 是為 OKS 持有者開發的 dApp。如果您之前從未使用過 Mintr，請先閱讀我們的簡要介紹。"
+				"title": "歡迎使用 Minter!",
+				"description": "Minter 是為 OKS 持有者開發的 dApp。如果您之前從未使用過 Minter，請先閱讀我們的簡要介紹。"
 			},
 			"whatIsSynthetix": {
 				"title": "什麽是 Synthetix?",
@@ -28,7 +28,7 @@
 		"walletSelection": {
 			"success": {
 				"title": "選擇錢包",
-				"subtitle": "請選擇您要連接到 Mintr 的錢包"
+				"subtitle": "請選擇您要連接到 Minter 的錢包"
 			},
 			"loading": {
 				"connectInstructions": "請按照您設備上的指示解鎖您的錢包。",
@@ -36,7 +36,7 @@
 			},
 			"error": {
 				"title": "錯誤",
-				"subtitle": "Mintr 不能存取您的錢包。",
+				"subtitle": "Minter 不能存取您的錢包。",
 				"retry": "重試"
 			}
 		}
@@ -111,7 +111,7 @@
 			}
 		}
 	},
-	"mintrActions": {
+	"MinterActions": {
 		"mint": {
 			"action": {
 				"title": "鑄造",
@@ -416,11 +416,11 @@
 		"speed": "預計轉帳時間："
 	},
 	"maintenance": {
-		"title": "Mintr 正在升級，現在暫停服務。",
+		"title": "Minter 正在升級，現在暫停服務。",
 		"subtitle": "抱歉給您帶來不便，我們很快就會回來。"
 	},
 	"mobileLanding": {
-		"title": "Mintr 現在無法在手機和平板上使用。",
+		"title": "Minter 現在無法在手機和平板上使用。",
 		"subtitle": "我們期望在接下來幾個月內上線一個移動版，敬請期待。"
 	},
 	"tooltip": {
