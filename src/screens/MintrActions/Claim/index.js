@@ -35,7 +35,7 @@ const useGetFeeData = walletAddress => {
 	const [data, setData] = useState({});
 	useEffect(() => {
 		const getFeeData = async () => {
-			const xdrBytes = bytesFormatter('XDR');
+			const xdrBytes = bytesFormatter('ODR');
 			const sUSDBytes = bytesFormatter('sUSD');
 			try {
 				setData({ ...data, dataIsLoading: true });
@@ -59,7 +59,7 @@ const useGetFeeData = walletAddress => {
 					snxJSConnector.snxJS.ExchangeRates.rateForCurrency(xdrBytes),
 				]);
 				const formattedXdrRate = bigNumberFormatter(xdrRate);
-				console.log("got feesByPeriod", feesByPeriod.results);
+				console.log('got feesByPeriod', feesByPeriod.results);
 				const formattedFeesByPeriod = feesByPeriod.results.slice(1).map(([fee, reward], i) => {
 					return {
 						fee: bigNumberFormatter(fee) * formattedXdrRate,
@@ -92,12 +92,12 @@ const useGetGasEstimate = () => {
 			let gasEstimate;
 			try {
 				//fetchingGasLimit(dispatch);
-				gasEstimate = 0;//await snxJSConnector.snxJS.FeePool.contract.estimate.claimFees();
+				gasEstimate = 0; //await snxJSConnector.snxJS.FeePool.contract.estimate.claimFees();
 			} catch (e) {
 				console.log(e);
 				const errorMessage = (e && e.message) || 'Error while getting gas estimate';
 				setError(errorMessage);
-				gasEstimate = 0;//DEFAULT_GAS_LIMIT['burn'];
+				gasEstimate = 0; //DEFAULT_GAS_LIMIT['burn'];
 			}
 			updateGasLimit(Number(gasEstimate), dispatch);
 		};
