@@ -11,7 +11,7 @@ const getBalances = async walletAddress => {
 			snxJSConnector.snxJS.Synthetix.collateral(walletAddress),
 			snxJSConnector.snxJS.sUSD.balanceOf(walletAddress),
 			snxJSConnector.provider.getBalance(walletAddress),
-			snxJSConnector.provider.getBalance(walletAddress),			
+			snxJSConnector.provider.getBalance(walletAddress),
 		]);
 		const trxRaw = result.pop();
 		const [oks, susd, eth] = result.map(bigNumberFormatter);
@@ -47,7 +47,7 @@ const getPrices = async () => {
 		const synthsP = snxJSConnector.snxJS.ExchangeRates.ratesForCurrencies(
 			['OKS', 'sUSD', 'sETH', 'sTRX'].map(bytesFormatter)
 		);
-		const sethToEthRateP = 1.05;//getSETHtoETH();
+		const sethToEthRateP = 1.05; //getSETHtoETH();
 		const [synths, sethToEthRate] = await Promise.all([synthsP, sethToEthRateP]);
 		const [oks, susd, seth, strx] = synths.map(bigNumberFormatter);
 
@@ -58,8 +58,8 @@ const getPrices = async () => {
 			},
 			sethToEthRate
 		);
-		  
-		return { oks, susd: susdInUsd, eth: seth, trx: strx};
+
+		return { oks, susd: susdInUsd, eth: seth, trx: strx };
 	} catch (e) {
 		console.log(e);
 	}
@@ -122,33 +122,28 @@ const getEscrow = async walletAddress => {
 	}
 };
 
-const getSynths = async walletAddress => { 
+const getSynths = async walletAddress => {
 	try {
-		const synths = snxJSConnector.synths
-		.filter(({ asset }) => asset)
-		.map(({ name }) => name)
+		const synths = snxJSConnector.synths.filter(({ asset }) => asset).map(({ name }) => name);
 		//.filter((synth) => {
 		//	return synth !== "sBTT" && synth !== "iBTT"
 		//});
-		console.log({synths})
- 
+		console.log({ synths });
+
 		const result = await Promise.all(
-			synths.map(async (synth) => {
+			synths.map(async synth => {
 				try {
 					return await snxJSConnector.snxJS[synth].balanceOf(walletAddress);
-				} catch(err) {
-					console.log("uhhh");
-					console.log(synth)
+				} catch (err) {
 					throw new Error(`error fetching balance of ${synth}: ${err}`);
-				}					
-
+				}
 			})
 		);
-		
-		console.log({result})
+
+		console.log({ result });
 		const balances = await Promise.all(
 			result.map((balance, i) => {
-				console.log(`getting ${synths[i]}`)
+				console.log(`getting ${synths[i]}`);
 				return snxJSConnector.snxJS.Synthetix.effectiveValue(
 					bytesFormatter(synths[i]),
 					balance,
@@ -156,7 +151,7 @@ const getSynths = async walletAddress => {
 				);
 			})
 		);
-		console.log({balances})
+		console.log({ balances });
 		let totalBalance = 0;
 		const formattedBalances = balances.map((balance, i) => {
 			const formattedBalance = bigNumberFormatter(balance);

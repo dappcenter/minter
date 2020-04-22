@@ -10,8 +10,8 @@ export const SUPPORTED_NETWORKS = {
 */
 
 export const SUPPORTED_NETWORKS = {
-  // 1: 'MAINNET',
-  2: 'shasta',
+	1: 'mainnet',
+	2: 'shasta',
 };
 
 export const DEFAULT_GAS_LIMIT = {
@@ -33,12 +33,12 @@ export const INFURA_JSON_RPC_URLS = {
 	42: `https://kovan.infura.io/v3/${INFURA_PROJECT_ID}`,
 };
 
-export const SUPPORTED_WALLETS = ['TronLink', /*'Trezor', 'Ledger', 'Coinbase', 'WalletConnect*/];
+export const SUPPORTED_WALLETS = ['TronLink' /*'Trezor', 'Ledger', 'Coinbase', 'WalletConnect*/];
 
 export const hasWeb3 = () => {
 	return window.web3;
-}
-export const hasTronLink = () => { 
+};
+export const hasTronLink = () => {
 	return window.tronWeb;
 };
 /*
@@ -57,23 +57,24 @@ export async function getEthereumNetwork() {
 }
 */
 export async function getTronNetwork() {
-  // TODO: @kev change shasta to mainnet
-  const defaultNetwork = { name: 'shasta', networkId: 2 };
+	// TODO: @kev change shasta to mainnet
+	const defaultNetwork = { name: 'mainnet', networkId: '1' };
 
-  if (!window.tronWeb) {
-    return defaultNetwork;
-  }
-  const apiHost = window.tronWeb.fullNode.host;
-  const matches = apiHost.match(/https:\/\/api\.([^.]*)\.trongrid.io/);
+	if (!window.tronWeb) {
+		return defaultNetwork;
+	}
+	const apiHost = window.tronWeb.fullNode.host;
+	const matches = apiHost.match(/https:\/\/api\.([^.]*)\.trongrid.io/);
+	// TODO: more robust: query block 0 to detect network
 
-  if (!matches) return defaultNetwork;
-  const name = matches[1];
+	if (!matches) return defaultNetwork;
+	const name = matches[1];
 
-  const networkId = Object.keys(SUPPORTED_NETWORKS).filter(
-    networkId => SUPPORTED_NETWORKS[networkId] === name
-  )[0];
+	const networkId = Object.keys(SUPPORTED_NETWORKS).filter(
+		networkId => SUPPORTED_NETWORKS[networkId] === name
+	)[0];
 
-  return { name, networkId };
+	return { name, networkId };
 }
 
 export const getNetworkInfo = async () => {

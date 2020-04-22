@@ -1,10 +1,11 @@
 import { SynthetixJs } from '@oikos/oikos-js';
-import { getTronNetwork, INFURA_JSON_RPC_URLS } from './networkHelper';
+import { getTronNetwork } from './networkHelper';
 
 let snxJSConnector = {
 	initialized: false,
 	signers: SynthetixJs.signers,
 	setContractSettings: function(contractSettings) {
+		console.log({ contractSettings });
 		this.initialized = true;
 		contractSettings.tronWeb = window.tronWeb;
 		this.snxJS = new SynthetixJs(contractSettings);
