@@ -2,20 +2,34 @@ import { addSeconds } from 'date-fns';
 import snxJSConnector from '../../helpers/snxJSConnector';
 
 import { bytesFormatter } from '../../helpers/formatters';
+import promiseRetry from 'promise-retry';
 
 const bigNumberFormatter = value => Number(snxJSConnector.utils.formatEther(value));
+
+const retry = fn => {
+	return promiseRetry(
+		async retry => {
+			try {
+				return await fn();
+			} catch (err) {
+				retry(err);
+			}
+		},
+		{ retries: 10 }
+	);
+};
 
 const getBalances = async walletAddress => {
 	try {
 		const result = await Promise.all([
-			snxJSConnector.snxJS.Synthetix.collateral(walletAddress),
-			snxJSConnector.snxJS.sUSD.balanceOf(walletAddress),
-			snxJSConnector.provider.getBalance(walletAddress),
-			snxJSConnector.provider.getBalance(walletAddress),
+			retry(() => snxJSConnector.snxJS.Synthetix.collateral(walletAddress)),
+			retry(() => snxJSConnector.snxJS.sUSD.balanceOf(walletAddress)),
+			retry(() => snxJSConnector.provider.getBalance(walletAddress)),
+			retry(() => snxJSConnector.provider.getBalance(walletAddress)),
 		]);
 		const trxRaw = result.pop();
 		const [oks, susd, eth] = result.map(bigNumberFormatter);
-		const trx = tronWeb.fromSun(tronWeb.BigNumber(trxRaw._hex).toString());
+		const trx = window.tronWeb.fromSun(window.tronWeb.BigNumber(trxRaw._hex).toString());
 
 		return { oks, susd, eth, trx };
 	} catch (e) {
@@ -44,10 +58,13 @@ const getSETHtoETH = async () => {
 
 const getPrices = async () => {
 	try {
-		const synthsP = snxJSConnector.snxJS.ExchangeRates.ratesForCurrencies(
-			['OKS', 'sUSD', 'sETH', 'sTRX'].map(bytesFormatter)
+		const synthsP = retry(() =>
+			snxJSConnector.snxJS.ExchangeRates.ratesForCurrencies(
+				['OKS', 'sUSD', 'sETH', 'sTRX'].map(bytesFormatter)
+			)
 		);
-		const sethToEthRateP = 1.05; //getSETHtoETH();
+		// TODO: get sTRX to TRX rate?
+		const sethToEthRateP = 1; //getSETHtoETH();
 		const [synths, sethToEthRate] = await Promise.all([synthsP, sethToEthRateP]);
 		const [oks, susd, seth, strx] = synths.map(bigNumberFormatter);
 
@@ -67,9 +84,9 @@ const getPrices = async () => {
 const getRewards = async walletAddress => {
 	try {
 		const [feesAreClaimable, currentFeePeriod, feePeriodDuration] = await Promise.all([
-			snxJSConnector.snxJS.FeePool.isFeesClaimable(walletAddress),
-			snxJSConnector.snxJS.FeePool.recentFeePeriods(0),
-			snxJSConnector.snxJS.FeePool.feePeriodDuration(),
+			retry(() => snxJSConnector.snxJS.FeePool.isFeesClaimable(walletAddress)),
+			retry(() => snxJSConnector.snxJS.FeePool.recentFeePeriods(0)),
+			retry(() => snxJSConnector.snxJS.FeePool.feePeriodDuration()),
 		]);
 
 		const currentPeriodStart =
@@ -89,10 +106,12 @@ const getRewards = async walletAddress => {
 const getDebt = async walletAddress => {
 	try {
 		const result = await Promise.all([
-			snxJSConnector.snxJS.SynthetixState.issuanceRatio(),
-			snxJSConnector.snxJS.Synthetix.collateralisationRatio(walletAddress),
-			snxJSConnector.snxJS.Synthetix.transferableSynthetix(walletAddress),
-			snxJSConnector.snxJS.Synthetix.debtBalanceOf(walletAddress, bytesFormatter('sUSD')),
+			retry(() => snxJSConnector.snxJS.SynthetixState.issuanceRatio()),
+			retry(() => snxJSConnector.snxJS.Synthetix.collateralisationRatio(walletAddress)),
+			retry(() => snxJSConnector.snxJS.Synthetix.transferableSynthetix(walletAddress)),
+			retry(() =>
+				snxJSConnector.snxJS.Synthetix.debtBalanceOf(walletAddress, bytesFormatter('sUSD'))
+			),
 		]);
 		const [targetCRatio, currentCRatio, transferable, debtBalance] = result.map(bigNumberFormatter);
 		return {
@@ -109,8 +128,8 @@ const getDebt = async walletAddress => {
 const getEscrow = async walletAddress => {
 	try {
 		const results = await Promise.all([
-			snxJSConnector.snxJS.RewardEscrow.totalEscrowedAccountBalance(walletAddress),
-			snxJSConnector.snxJS.SynthetixEscrow.balanceOf(walletAddress),
+			retry(() => snxJSConnector.snxJS.RewardEscrow.totalEscrowedAccountBalance(walletAddress)),
+			retry(() => snxJSConnector.snxJS.SynthetixEscrow.balanceOf(walletAddress)),
 		]);
 		const [reward, tokenSale] = results.map(bigNumberFormatter);
 		return {
@@ -133,7 +152,7 @@ const getSynths = async walletAddress => {
 		const result = await Promise.all(
 			synths.map(async synth => {
 				try {
-					return await snxJSConnector.snxJS[synth].balanceOf(walletAddress);
+					return await retry(() => snxJSConnector.snxJS[synth].balanceOf(walletAddress));
 				} catch (err) {
 					throw new Error(`error fetching balance of ${synth}: ${err}`);
 				}
@@ -143,12 +162,14 @@ const getSynths = async walletAddress => {
 		console.log({ result });
 		const balances = await Promise.all(
 			result.map((balance, i) => {
-				console.log(`getting ${synths[i]}`);
-				return snxJSConnector.snxJS.Synthetix.effectiveValue(
-					bytesFormatter(synths[i]),
-					balance,
-					bytesFormatter('sUSD')
-				);
+				return retry(() => {
+					console.log(`getting ${synths[i]}`);
+					return snxJSConnector.snxJS.Synthetix.effectiveValue(
+						bytesFormatter(synths[i]),
+						balance,
+						bytesFormatter('sUSD')
+					);
+				});
 			})
 		);
 		console.log({ balances });

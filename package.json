@@ -16,6 +16,7 @@
 		"keccak": "^2.0.0",
 		"lodash": "^4.17.15",
 		"numbro": "^2.1.2",
+		"promise-retry": "^1.1.1",
 		"rc-slider": "^8.7.1",
 		"rc-tooltip": "4.0.0-alpha.0",
 		"react": "^16.8.6",

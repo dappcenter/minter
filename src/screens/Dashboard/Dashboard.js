@@ -198,8 +198,9 @@ const Dashboard = ({ t }) => {
 
 	const [dashboardIsLoading, setDashboardIsLoading] = useState(true);
 	const [data, setData] = useState({});
+
+	// setDashboardIsLoading(true);
 	const loadData = useCallback(() => {
-		setDashboardIsLoading(true);
 		fetchData(currentWallet, successQueue).then(data => {
 			setData(data);
 			setDashboardIsLoading(false);
@@ -216,6 +217,11 @@ const Dashboard = ({ t }) => {
 		};
 	}, [loadData]);
 
+	const onClickRefresh = () => {
+		setDashboardIsLoading(true);
+		loadData();
+	};
+
 	const { balances = {}, prices = {}, debtData = {}, synthData = {}, escrowData = {} } = data;
 	return (
 		<DashboardWrapper>
@@ -226,7 +232,7 @@ const Dashboard = ({ t }) => {
 						<H5 mb={0}>{t('dashboard.sections.wallet')}</H5>
 						<ButtonSpinnerContainer>
 							{dashboardIsLoading && <MicroSpinner />}
-							<ButtonTertiary onClick={() => loadData()}>
+							<ButtonTertiary onClick={onClickRefresh}>
 								{t('dashboard.buttons.refresh')}
 							</ButtonTertiary>
 						</ButtonSpinnerContainer>
