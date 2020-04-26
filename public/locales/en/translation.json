@@ -116,7 +116,7 @@
 			}
 		}
 	},
-	"MinterActions": {
+	"mintrActions": {
 		"mint": {
 			"action": {
 				"title": "Mint",
