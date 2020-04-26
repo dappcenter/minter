@@ -1,5 +1,7 @@
 import { SynthetixJs } from '@oikos/oikos-js';
 import { getTronNetwork } from './networkHelper';
+import contracts from './contracts';
+
 const { uniswap, unipool } = contracts;
 
 let snxJSConnector = {
