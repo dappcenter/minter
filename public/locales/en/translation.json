@@ -93,6 +93,33 @@
 		"title": "What would you like to do?"
 	  },
 	  "actions": {
+		"intro": {
+			"title": "What would you like to do?"
+		},
+		"actions": {
+			"mint": {
+				"title": "Mint",
+				"description": "Mint sUSD by staking OKS"
+			},
+			"burn": {
+				"title": "Burn",
+				"description": "Burn sUSD to unlock staked OKS"
+			},
+			"claim": {
+				"title": "Claim",
+				"description": "Claim rewards from OKS staking and Synth exchanges"
+			},
+			"trade": {
+				"title": "Trade",
+				"description": "Trade any Synth to sUSD"
+			},
+			"transfer": {
+				"title": "Transfer",
+				"description": "Transfer OKS, Synths, or TRX"
+			}
+		}
+	},
+	"mintrActions": {
 		"mint": {
 		  "title": "Mint",
 		  "description": "Mint sUSD by staking OKS"
