@@ -14,7 +14,7 @@ let snxJSConnector = {
 		this.provider = this.signer.provider;
 		this.utils = this.snxJS.utils;
 		this.ethersUtils = this.snxJS.ethers.utils;
-		//this.uniswapContract = window.tronWeb.contract().at(uniswap.address); //new ethers.Contract(uniswap.address, uniswap.abi, this.signer);
+		this.uniswapContract = window.tronWeb.contract().at(uniswap.address); //new ethers.Contract(uniswap.address, uniswap.abi, this.signer);
 		//this.unipoolContract = new ethers.Contract(unipool.address, unipool.abi, this.signer);
 		//this.synthSummaryUtilContractAddress = "410fd440ab8be763f0eef27356f0f84a5e852c4a03";
 	},
