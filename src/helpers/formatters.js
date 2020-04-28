@@ -16,4 +16,8 @@ export const bytesFormatter = input => snxJSConnector.ethersUtils.formatBytes32S
 
 export const bigNumberFormatter = value => Number(snxJSConnector.utils.formatEther(value));
 
+export const formatUniv1 = value =>  {
+ 
+	return Number(value.toString() / 10**6).toFixed(4)
+}
 export const getAddress = addr => addr ; //snxJSConnector.ethersUtils.getAddress(addr);

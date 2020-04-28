@@ -1,7 +1,7 @@
  
 export default {
 	unipool: {
-		address: '41b400042fe647c11002eb01ef991b4bee1b66948e',
+		address: '412bb6eb4acd94c5502feeca6ff309a5c5578fc99b',
 		abi: [
 			{
 				constant: true,
@@ -264,7 +264,7 @@ export default {
 		],
 	},
 	uniswap: {
-		address: '414590ead5b749c0398275eb293d9295720534db03',
+		address: '41020c35f781bc9e50acf40dea40157d04e397c316',
 		abi: [
 			{
 				name: 'TokenPurchase',

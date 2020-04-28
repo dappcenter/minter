@@ -5,7 +5,7 @@ import snxJSConnector from '../../../helpers/snxJSConnector';
 import { Store } from '../../../store';
 
 import { GWEI_UNIT } from '../../../helpers/networkHelper';
-import { bigNumberFormatter, formatCurrency } from '../../../helpers/formatters';
+import { bigNumberFormatter, formatCurrency, formatUniv1 } from '../../../helpers/formatters';
 import { ButtonPrimary } from '../../../components/Button';
 import PageContainer from '../../../components/PageContainer';
 
@@ -26,6 +26,7 @@ const UniPool = () => {
 			},
 		},
 	} = useContext(Store);
+	console.log(balances);
 
 	const fetchAllowance = useCallback(async () => {
 		if (!snxJSConnector.initialized) return;
@@ -51,7 +52,7 @@ const UniPool = () => {
 				uniswapContract.balanceOf(currentWallet).call(),
 				unipoolContract.rewards(currentWallet).call(),
 			]);
-			setBalances({ univ1: bigNumberFormatter(univ1), rewards: bigNumberFormatter(rewards) });
+			setBalances({ univ1: formatUniv1(univ1), rewards: bigNumberFormatter(rewards) });
 		} catch (e) {
 			console.log(e);
 		}
@@ -100,7 +101,7 @@ const UniPool = () => {
 			setError(null);
 			setTransactionHash(null);
 			const gasEstimate = 0;//await unipoolContract.estimate.stake(parseEther(stakeAmount.toString()));
-			const transaction = await unipoolContract.stake(parseEther(stakeAmount.toString()) ).send();
+			const transaction = await unipoolContract.stake(Number(stakeAmount.toString()*10**6)).send();
 			console.log(transaction);
 			if (transaction) {
 				setTransactionHash(transaction.hash);
@@ -121,7 +122,7 @@ const UniPool = () => {
 			const gasEstimate = 0 /*await unipoolContract.estimate.withdraw(
 				parseEther(withdrawAmount.toString())
 			);*/
-			const transaction = await unipoolContract.withdraw(parseEther(withdrawAmount.toString())).send();
+			const transaction = await unipoolContract.withdraw(Number(withdrawAmount.toString()* 10**6)).send();
 			if (transaction) {
 				setTransactionHash(transaction.hash);
 			}
@@ -162,7 +163,6 @@ const UniPool = () => {
 			console.log(e);
 		}
 	};
-	console.log(balances);
 
 	return (
 		<PageContainer>
@@ -180,7 +180,7 @@ const UniPool = () => {
 							</Label>
 							<Label style={{ marginTop: '10px' }}>
 								Rewards available:{' '}
-								{balances && balances.rewards ? formatCurrency(balances.rewards) : 0} SNX
+								{balances && balances.rewards ?  (balances.rewards) : 0} SNX
 							</Label>
 						</Data>
 						<ButtonRow>
