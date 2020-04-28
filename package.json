@@ -6,6 +6,7 @@
 	"author": "Oikos",
 	"dependencies": {
 		"@oikos/oikos-js": "^0.2.1",
+		"@oikos/swap": "^0.2.0",
 		"@rehooks/component-size": "^1.0.3",
 		"browserslist": "^4.8.2",
 		"date-fns": "^2.0.1",

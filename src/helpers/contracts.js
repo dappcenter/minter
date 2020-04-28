@@ -1,7 +1,7 @@
- 
+const addresses = require('@oikos/swap/addresses.json') 
 export default {
 	unipool: {
-		address: '412bb6eb4acd94c5502feeca6ff309a5c5578fc99b',
+		address: '413877a3b5ab2f70e599a0d12052f1ed66fc60e5a1',
 		abi: [
 			{
 				constant: true,
@@ -264,7 +264,7 @@ export default {
 		],
 	},
 	uniswap: {
-		address: '41020c35f781bc9e50acf40dea40157d04e397c316',
+		address: addresses.mainnet.exchanges.sTRX.address,
 		abi: [
 			{
 				name: 'TokenPurchase',
