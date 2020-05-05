@@ -176,11 +176,11 @@ const UniPool = () => {
 					<>
 						<Data>
 							<Label>
-								Balance: {balances && balances.univ1 ? balances.univ1 : 0} UNI-V1
+								Balance: {balances && balances.univ1 ? balances.univ1 : 0} SWAP
 							</Label>
 							<Label style={{ marginTop: '10px' }}>
 								Rewards available:{' '}
-								{balances && balances.rewards ?  (balances.rewards) : 0} SNX
+								{balances && balances.rewards ?  (balances.rewards) : 0} OKS
 							</Label>
 						</Data>
 						<ButtonRow>

@@ -5,8 +5,8 @@
 	"license": "MIT",
 	"author": "Oikos",
 	"dependencies": {
-		"@oikos/oikos-js": "^0.4.1",
-		"@oikos/swap": "^0.2.0",
+		"@oikos/oikos-js": "^0.4.2",
+		"@oikos/swap": "^0.6.4",
 		"@rehooks/component-size": "^1.0.3",
 		"browserslist": "^4.8.2",
 		"date-fns": "^2.0.1",
