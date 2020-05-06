@@ -17,7 +17,7 @@ const TabRow = () => {
 		},
 		dispatch,
 	} = useContext(Store);
-	return ['home', 'depot', 'transactionsHistory', 'escrow', 'unipool'].map(tab => {
+	return ['home', 'transactionsHistory', 'escrow', 'unipool'].map(tab => {
 		return (
 			<TabButton
 				key={tab}
@@ -36,8 +36,8 @@ const renderScreen = screen => {
 		case 'home':
 		default:
 			return <Home />;
-		case 'depot':
-			return <Depot />;
+		//case 'depot':
+		//	return <Depot />;
 		case 'transactionsHistory':
 			return <Transactions />;
 		case 'escrow':
