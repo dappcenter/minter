@@ -28,6 +28,25 @@ const renderCurrentPage = currentPage => {
 	}
 };
 
+const Announcement = styled.div`
+	width: 100%;
+	display: block;
+	background-color: #fff;
+	border-bottom: 2px solid #000;
+	text-align: center;
+	color: #46bf89;
+	font-size: 1em;
+	font-weight: bold;
+	& a {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		display: block;
+		color: #46bf89;
+		font-weight: bold;
+		text-decoration: none;
+	}
+`;
+
 const Root = () => {
 	const [isOnMaintenance, setIsOnMaintenance] = useState(false);
 	const {
@@ -64,6 +83,11 @@ const Root = () => {
 	return (
 		<Suspense fallback={<div></div>}>
 			<RootWrapper>
+				<Announcement>
+					<a href="https://oikos.cash/crowdsale">
+						Announcement: the Oikos (OKS) token sale is live!
+					</a>
+				</Announcement>
 				{isOnMaintenance ? <MaintenanceMessage /> : renderCurrentPage(currentPage)}
 				<NotificationCenter></NotificationCenter>
 			</RootWrapper>
