@@ -41,7 +41,7 @@ const Action = ({
 			<Container>
 				<Navigation>
 					<ButtonTertiary onClick={onDestroy}>{t('button.navigation.cancel')}</ButtonTertiary>
-					<ButtonTertiary as="a" target="_blank" href="https://synthetix.exchange">
+					<ButtonTertiary as="a" target="_blank" href="https://oikos.exchange">
 						{t('mintrActions.trade.action.buttons.exchange')}↗
 					</ButtonTertiary>
 				</Navigation>
