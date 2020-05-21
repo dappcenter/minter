@@ -6,7 +6,7 @@ export function getStakingAmount({ issuanceRatio, mintAmount, OKSprice =0.6}) {
 	return formatCurrency(mintAmount / issuanceRatio / OKSprice);
 }
 
-export function estimateCRatio({ OKSprice= 0.6, debtBalance, oksBalance, mintAmount }) {
+export function estimateCRatio({ OKSprice= 0.025, debtBalance, oksBalance, mintAmount }) {
  
 
 	console.log(OKSprice,debtBalance, oksBalance, mintAmount  )
