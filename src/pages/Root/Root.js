@@ -37,7 +37,6 @@ const Announcement = styled.div`
 	color: #2deb96;
 	font-size: 1.2em;
 	font-weight: bold;
-	font-family:"Montserrat";
 	& a {
 		padding-top: 10px;
 		padding-bottom: 10px;
