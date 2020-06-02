@@ -83,11 +83,7 @@ const Root = () => {
 	return (
 		<Suspense fallback={<div></div>}>
 			<RootWrapper>
-				<Announcement>
-					<a href="https://oikos.cash/crowdsale">
-						Announcement: the Oikos (OKS) token sale is live!
-					</a>
-				</Announcement>
+ 
 				{isOnMaintenance ? <MaintenanceMessage /> : renderCurrentPage(currentPage)}
 				<NotificationCenter></NotificationCenter>
 			</RootWrapper>
