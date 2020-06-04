@@ -27,7 +27,7 @@ import TransactionPriceIndicator from '../../../components/TransactionPriceIndic
 
 const mapVestingData = data => {
 	const currentUnixTime = new Date().getTime();
-	const vestStartTime = 1520899200;
+	const vestStartTime = 1589990280;
 	const monthInSeconds = 2592000;
 	const dataReversed = data.slice().reverse();
 	let totalPeriod = 0;
