@@ -1,7 +1,7 @@
 import { formatCurrency } from '../../../helpers/formatters';
 import { toNumber, isFinite, isNil } from 'lodash';
 
-export function getStakingAmount({ issuanceRatio, mintAmount, OKSprice =0.6}) {
+export function getStakingAmount({ issuanceRatio, mintAmount, OKSprice =0.025}) {
 	if (!mintAmount || !issuanceRatio || !OKSprice) return '0';
 	return formatCurrency(mintAmount / issuanceRatio / OKSprice);
 }
