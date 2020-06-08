@@ -129,7 +129,7 @@ const WalletButtons = () => {
 						key={wallet}
 						onClick={onWalletClick({ wallet, derivationPath }, dispatch)}
 					>
-						<Icon src={`images/wallets/${wallet}.svg`} />
+						<Icon src={`images/wallets/${wallet.toLowerCase()}.svg`} />
 						<WalletConnectionH2>{wallet}</WalletConnectionH2>
 					</Button>
 				);
