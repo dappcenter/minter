@@ -116,6 +116,7 @@ const useGetGasEstimate = (currency, amount, destination) => {
 };
 
 const sendTransaction = async (currency, amount, destination, settings) => {
+
 	const sunDecimals = 6;
 	if (!currency) return null;
 	if (currency === 'OKS') {
@@ -175,6 +176,7 @@ const Send = ({ onDestroy }) => {
 
 			//console.log('got tx', transaction);
 
+		
 			if (transaction) {
 				setTransactionInfo({ transactionHash: transaction.hash });
 				createTransaction(
@@ -192,8 +194,8 @@ const Send = ({ onDestroy }) => {
 			}
 		} catch (e) {
 			console.log(e);
-			const errorMessage = errorMapper(e, walletType);
-			console.log(errorMessage);
+			//const errorMessage = errorMapper(e, walletType);
+			//console.log(errorMessage);
 			setTransactionInfo({
 				...transactionInfo,
 				transactionError: e,
