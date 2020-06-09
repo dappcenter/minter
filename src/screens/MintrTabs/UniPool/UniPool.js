@@ -4,278 +4,82 @@ import styled from 'styled-components';
 import snxJSConnector from '../../../helpers/snxJSConnector';
 import { Store } from '../../../store';
 
-import { GWEI_UNIT } from '../../../helpers/networkHelper';
-import { bigNumberFormatter, formatCurrency, formatUniv1 } from '../../../helpers/formatters';
-import { ButtonPrimary } from '../../../components/Button';
-import PageContainer from '../../../components/PageContainer';
+import { bigNumberFormatter,formatUniv1 } from '../../../helpers/formatters';
 
-const ALLOWANCE_LIMIT = 100000000;
+import PageContainer from '../../../components/PageContainer';
+import Spinner from '../../../components/Spinner';
+
+import SetAllowance from './SetAllowance';
+import Stake from './Stake';
+
 
 const UniPool = () => {
 	const [hasAllowance, setAllowance] = useState(false);
-	const [balances, setBalances] = useState(null);
-	const [stakeAmount, setStakeAmount] = useState('');
-	const [withdrawAmount, setWithdrawAmount] = useState('');
-	const [error, setError] = useState(null);
-	const [transactionHash, setTransactionHash] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
 	const {
 		state: {
 			wallet: { currentWallet },
-			network: {
-				settings: { gasPrice },
-			},
 		},
 	} = useContext(Store);
-	console.log(balances);
 
 	const fetchAllowance = useCallback(async () => {
-		if (!snxJSConnector.initialized) return;
-		try {
-			const { uniswapContract, unipoolContract } = snxJSConnector;
+		console.log({snxJSConnector});
 
-			const allowance = await uniswapContract
-				.allowance(currentWallet, unipoolContract.address)
-				.call();
-			console.log(allowance);
-			setAllowance(bigNumberFormatter(allowance));
+		if (!snxJSConnector.initialized) return;
+		const { uniswapContract, unipoolContract } = snxJSConnector;
+		try {
+			setIsLoading(true);
+			const allowance = await uniswapContract.allowance(currentWallet, unipoolContract.address).call();
+			setAllowance(!!bigNumberFormatter(allowance));
+			setIsLoading(false);
 		} catch (e) {
 			console.log(e);
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [currentWallet, snxJSConnector.initialized]);
-
-	const fetchData = useCallback(async () => {
-		if (!snxJSConnector.initialized) return;
-		try {
-			const { uniswapContract, unipoolContract } = snxJSConnector;
-			const [univ1, rewards] = await Promise.all([
-				uniswapContract.balanceOf(currentWallet).call(),
-				unipoolContract.rewards(currentWallet).call(),
-			]);
-			setBalances({ univ1: formatUniv1(univ1), rewards: bigNumberFormatter(rewards) });
-		} catch (e) {
-			console.log(e);
+			setIsLoading(false);
+			setAllowance(true);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentWallet, snxJSConnector.initialized]);
 
 	useEffect(() => {
 		fetchAllowance();
-		fetchData();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [fetchAllowance]);
 
 	useEffect(() => {
 		if (!currentWallet) return;
 		const { uniswapContract, unipoolContract } = snxJSConnector;
+
 		/*uniswapContract.on('Approval', (owner, spender) => {
 			if (owner === currentWallet && spender === unipoolContract.address) {
-				console.log('here', owner, spender);
-				fetchAllowance();
+				setAllowance(true);
 			}
 		});*/
+
+		return () => {
+			if (snxJSConnector.initialized) {
+			//	uniswapContract.removeAllListeners('Approval');
+			}
+		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentWallet]);
 
-	const onUnlock = async () => {
-		const { parseEther } = snxJSConnector.utils;
-		const { uniswapContract, unipoolContract } = snxJSConnector;
-		try {
-			const gasEstimate = 0; //await uniswapContract.estimate.approve(
-			//	unipoolContract.address,
-			//	parseEther(ALLOWANCE_LIMIT.toString())
-			//).call();
-			await uniswapContract
-				.approve(unipoolContract.address, parseEther(ALLOWANCE_LIMIT.toString()))
-				.send();
-		} catch (e) {
-			console.log(e);
-		}
-	};
-
-	const onStake = async () => {
-		const { parseEther } = snxJSConnector.utils;
-		const { unipoolContract } = snxJSConnector;
-		try {
-			if (!stakeAmount) return;
-			setError(null);
-			setTransactionHash(null);
-			const gasEstimate = 0;//await unipoolContract.estimate.stake(parseEther(stakeAmount.toString()));
-			const transaction = await unipoolContract.stake(Number(stakeAmount.toString()*10**6)).send();
-			console.log(transaction);
-			if (transaction) {
-				setTransactionHash(transaction.hash);
-			}
-		} catch (e) {
-			setError(e.message);
-			console.log(e);
-		}
-	};
-
-	const onWithdraw = async () => {
-		const { parseEther } = snxJSConnector.utils;
-		const { unipoolContract } = snxJSConnector;
-		try {
-			if (!withdrawAmount) return;
-			setError(null);
-			setTransactionHash(null);
-			const gasEstimate = 0 /*await unipoolContract.estimate.withdraw(
-				parseEther(withdrawAmount.toString())
-			);*/
-			const transaction = await unipoolContract.withdraw(Number(withdrawAmount.toString()* 10**6)).send();
-			if (transaction) {
-				setTransactionHash(transaction.hash);
-			}
-		} catch (e) {
-			setError(e.message);
-			console.log(e);
-		}
-	};
-
-	const onGetReward = async () => {
-		const { unipoolContract } = snxJSConnector;
-		try {
-			setError(null);
-			setTransactionHash(null);
-			const gasEstimate = 0;//await unipoolContract.estimate.getReward();
-			const transaction = await unipoolContract.getReward().send();
-			if (transaction) {
-				setTransactionHash(transaction.hash);
-			}
-		} catch (e) {
-			setError(e.message);
-			console.log(e);
-		}
-	};
-
-	const onExit = async () => {
-		const { unipoolContract } = snxJSConnector;
-		try {
-			setError(null);
-			setTransactionHash(null);
-			const gasEstimate = 0; //await unipoolContract.estimate.exit();
-			const transaction = await unipoolContract.exit().send();
-			if (transaction) {
-				setTransactionHash(transaction.hash);
-			}
-		} catch (e) {
-			setError(e.message);
-			console.log(e);
-		}
-	};
-
 	return (
 		<PageContainer>
-			<Inner>
-				{!hasAllowance ? (
-					<ButtonRow>
-						Allow token
-						<ButtonPrimary onClick={onUnlock}>Unlock</ButtonPrimary>
-					</ButtonRow>
-				) : (
-					<>
-						<Data>
-							<Label>
-								Balance: {balances && balances.univ1 ? balances.univ1 : 0} SWAP
-							</Label>
-							<Label style={{ marginTop: '10px' }}>
-								Rewards available:{' '}
-								{balances && balances.rewards ?  (balances.rewards) : 0} OKS
-							</Label>
-						</Data>
-						<ButtonRow>
-							<Left>
-								<Input
-									type="number"
-									placeholder="enter an amount"
-									onChange={e => setStakeAmount(e.target.value)}
-								/>
-							</Left>
-							<ButtonPrimary onClick={onStake}>Stake</ButtonPrimary>
-						</ButtonRow>
-						<ButtonRow>
-							<Left />
-							<ButtonPrimary onClick={onGetReward}>Get Rewards</ButtonPrimary>
-						</ButtonRow>
-						<ButtonRow>
-							<Left>
-								<Input
-									type="number"
-									placeholder="enter an amount"
-									onChange={e => setWithdrawAmount(e.target.value)}
-								/>
-							</Left>
-							<ButtonPrimary onClick={onWithdraw}>Withdraw</ButtonPrimary>
-						</ButtonRow>
-						<ButtonRow>
-							<Left />
-							<ButtonPrimary onClick={onExit}>Exit</ButtonPrimary>
-						</ButtonRow>
-					</>
-				)}
-				{error ? <Error>{`Error: ${error}`}</Error> : null}
-				{transactionHash ? (
-					<Link target="_blank" href={`https://etherscan.io/tx/${transactionHash}`}>
-						<Label>{`https://etherscan.io/tx/${transactionHash}`}</Label>
-					</Link>
-				) : null}
-			</Inner>
+			{isLoading ? (
+				<SpinnerContainer>
+					<Spinner />
+				</SpinnerContainer>
+			) : !hasAllowance ? (
+				<SetAllowance />
+			) : (
+				<Stake />
+			)}
 		</PageContainer>
 	);
 };
 
-const Input = styled.input`
-	height: 72px;
-	width: 150px;
-	padding: 0 10px;
-	border-radius: 5px;
-	border: 1px solid ${props => props.theme.colorStyles.borders};
-	font-size: 14px;
-	font-family: 'apercu-medium', sans-serif;
-	color: ${props => props.theme.colorStyles.body};
-`;
-
-const Left = styled.div`
-	width: 150px;
-`;
-
-const Data = styled.div`
-	margin-bottom: 40px;
-`;
-
-const Inner = styled.div`
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	justify-content: center;
-`;
-
-const ButtonRow = styled.div`
-	display: flex;
-	width: 100%;
-	justify-content: center;
-	align-items: center;
-	margin-top: 20px;
-	& > button {
-		margin-left: 40px;
-	}
-`;
-
-const Label = styled.div`
-	font-size: 16px;
-	font-family: 'apercu-medium', sans-serif;
-	color: ${props => props.theme.colorStyles.body};
-`;
-
-const Error = styled(Label)`
-	color: ${props => props.theme.colorStyles.brandRed};
-	display: flex;
-	justify-content: center;
-	margin-top: 40px;
-`;
-
-const Link = styled.a`
-	margin-top: 40px;
+const SpinnerContainer = styled.div`
+	margin: 100px;
 `;
 
 export default UniPool;
