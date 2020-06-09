@@ -1,7 +1,8 @@
 const addresses = require('@oikos/swap/addresses.json') 
+//OLD contract 4115909315aadea0064b67634d2c9d54805d0b409c
 export default {
 	unipool: {
-		address: '4115909315aadea0064b67634d2c9d54805d0b409c',
+		address: '415ea3ad9cfa4b303689cdd78e63cd2be9266d3173',
 		abi: [
 			{
 				constant: true,

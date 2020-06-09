@@ -185,8 +185,8 @@ const Stake = ({ t }) => {
 							setCurrentScenario({
 								action: 'exit',
 								label: t('unipool.unlocked.actions.exiting'),
-								amount: `${balances && formatCurrency(balances.univ1Staked)} UNI-V1 & ${balances &&
-									formatCurrency(balances.rewards)} SNX`,
+								amount: `${balances && formatCurrency(balances.univ1Staked)} SWAP & ${balances &&
+									formatCurrency(balances.rewards)} OKS`,
 								...TRANSACTION_DETAILS['exit'],
 							})
 						}
