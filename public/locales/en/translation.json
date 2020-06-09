@@ -325,6 +325,7 @@
 		"unlocked": {
 			"title": "Stake & manage your Swap LP Tokens",
 			"subtitle": "Here you can stake/unstake your sTRX/TRX Swap liquidty pool tokens, claim rewards, or exit completely if you're already staking (includes claiming).",
+			 "buttonText": "Go to swap ↗",
 			"data": {
 				"balance": "Your balance",
 				"staked": "Currently staked",

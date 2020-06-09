@@ -115,7 +115,7 @@ const Stake = ({ t }) => {
 					target="_blank"
 					href="https://swap.oikos.cash/swap/TQcPMpkEp7Vq4RxEMhEtHWkE5wGhEtbNDz"
 				>
-					Go to Swap ↗
+					{t('unipool.unlocked.buttonText')}
 				</ButtonTertiary>
 			</Navigation>
 			<PageTitle>{t('unipool.unlocked.title')}</PageTitle>
