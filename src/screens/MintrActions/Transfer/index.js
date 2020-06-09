@@ -194,8 +194,8 @@ const Send = ({ onDestroy }) => {
 			}
 		} catch (e) {
 			console.log(e);
-			//const errorMessage = errorMapper(e, walletType);
-			//console.log(errorMessage);
+			const errorMessage = errorMapper(e, walletType);
+			console.log(errorMessage);
 			setTransactionInfo({
 				...transactionInfo,
 				transactionError: e,
