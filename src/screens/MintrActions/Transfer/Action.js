@@ -68,7 +68,7 @@ const Action = ({
 						<SimpleInput
 							onChange={e => setSendDestination(e.target.value)}
 							value={sendDestination}
-							placeholder="e.g. 0x3b18a4..."
+							placeholder="e.g. TDjV35Zw..."
 						/>
 					</Form>
 				</Middle>
