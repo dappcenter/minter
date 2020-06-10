@@ -72,6 +72,8 @@ const Stake = ({ t }) => {
 
 	useEffect(() => {
 		fetchData();
+		const interval = setInterval(() => fetchData(), 1000)
+		return () => clearInterval(interval)
 	}, [fetchData]);
 
 	useEffect(() => {
