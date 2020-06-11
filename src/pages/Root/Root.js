@@ -83,7 +83,11 @@ const Root = () => {
 	return (
 		<Suspense fallback={<div></div>}>
 			<RootWrapper>
- 
+				<Announcement>
+					<a href="https://support.hoo.com/hc/en-us/articles/900001258163">
+						Announcement: Oikos IEO on Hoo.com from Jun 12 to Jun 14 🚀
+					</a>
+				</Announcement>
 				{isOnMaintenance ? <MaintenanceMessage /> : renderCurrentPage(currentPage)}
 				<NotificationCenter></NotificationCenter>
 			</RootWrapper>
