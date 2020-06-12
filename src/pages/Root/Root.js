@@ -84,7 +84,7 @@ const Root = () => {
 		<Suspense fallback={<div></div>}>
 			<RootWrapper>
 				<Announcement>
-					<a href="https://hoo.com/labs/detail/oks">
+					<a href="https://hoo.com/labs/detail/oks2">
 						Announcement: Oikos IEO on Hoo.com from Jun 12 to Jun 14 🚀
 					</a>
 				</Announcement>
