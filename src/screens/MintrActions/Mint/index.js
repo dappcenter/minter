@@ -94,7 +94,7 @@ const Mint = ({ onDestroy }) => {
 	} = useContext(Store);
 
 	const sUSDBytes = bytesFormatter('sUSD');
-	const { issuableSynths, issuanceRatio, OKSprice, debtBalance, oksBalance } = useGetIssuanceData(
+	const { issuableSynths, issuanceRatio, OKSPrice, debtBalance, oksBalance } = useGetIssuanceData(
 		currentWallet,
 		sUSDBytes
 	);
@@ -153,7 +153,7 @@ const Mint = ({ onDestroy }) => {
 		mintAmount,
 		setMintAmount,
 		issuanceRatio,
-		OKSprice,
+		OKSPrice,
 		...transactionInfo,
 		isFetchingGasLimit,
 		gasEstimateError,

@@ -10,7 +10,7 @@ import { PLarge, PageTitle, DataHeaderLarge, Subtext } from '../../../components
 import Spinner from '../../../components/Spinner';
 import { getStakingAmount } from './mint-helpers';
 
-const Confirmation = ({ t, goBack, walletType, mintAmount, issuanceRatio, SNXPrice }) => {
+const Confirmation = ({ t, goBack, walletType, mintAmount, issuanceRatio, OKSPrice }) => {
 	return (
 		<SlidePage>
 			<Container>
@@ -42,7 +42,7 @@ const Confirmation = ({ t, goBack, walletType, mintAmount, issuanceRatio, SNXPri
 								{getStakingAmount({
 									issuanceRatio,
 									mintAmount,
-									SNXPrice,
+									OKSPrice,
 								})}
 								{' OKS'}
 							</Amount>
