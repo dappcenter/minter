@@ -14,8 +14,6 @@ import MobileLanding from '../MobileLanding';
 import NotificationCenter from '../../components/NotificationCenter';
 import snxJSConnector from '../../helpers/snxJSConnector';
 import { getTronNetwork } from '../../helpers/networkHelper';
-import { useTranslation } from 'react-i18next';
-
 
 const renderCurrentPage = currentPage => {
 	if (isMobileOrTablet()) return <MobileLanding />;
@@ -50,7 +48,6 @@ const Announcement = styled.div`
 `;
 
 const Root = () => {
-	const {t} = useTranslation()
 	const [isOnMaintenance, setIsOnMaintenance] = useState(false);
 	const {
 		state: {
@@ -87,8 +84,8 @@ const Root = () => {
 		<Suspense fallback={<div></div>}>
 			<RootWrapper>
 				<Announcement>
-					<a href="#">
-					{t('announcement')}
+					<a href="https://hoo.com/labs/detail/oks2">
+					Oikos IEO on Hoo.com sold out. Thanks to all participants ❤️. Stay tuned for listing announcement. 🚀
 					</a>
 				</Announcement>
 				{isOnMaintenance ? <MaintenanceMessage /> : renderCurrentPage(currentPage)}
