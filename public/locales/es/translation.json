@@ -41,6 +41,38 @@
 			}
 		}
 	},
+	"unipool": { 
+		"locked": {
+			"title": "Oikos Swap Liquidity Pool",
+			"subtitle": "Si está contribuyendo con liquidez al grupo de liquidez sTRX / TRX en Oikos Swap, ahora puede obtener recompensas OKS apostando su token Oikos Swap LP aquí."
+		},
+		"unlocked": {
+			"title": "Estaca y administra tus tokens de intercambio de LP",
+			"subtitle": "Aquí puede apostar / desestimar sus tokens de grupo de liquidez sTRX / TRX Swap, reclamar recompensas o salir por completo si ya está apostando (incluye reclamar).",
+			 "buttonText": "Ir a swap ↗",
+			"data": {
+				"balance": "Tu balance",
+				"staked": "Actualmente estacado",
+				"rewardsAvailable": "Recompensas disponibles"
+			},
+			"actions": {
+				"staking": "Estacar",
+				"claiming": "Reclamar",
+				"unstaking": "Desestacar",
+				"exiting": "Desestacar y reclamar"
+			},
+			"complete": "Transacción en progreso!"
+		},
+		"buttons": {
+			"unlock": "Desbloquear",
+			"goToContract": "Ir a contrato",
+			"stake": "Estacar Swap tokens",
+			"claim": "Reclamar recompensas",
+			"unstake": "Desestacar Swap tokens",
+			"exit": "salir: reclamar y desestacar",
+			"migrate": "migrar a nuevo contrato su saldo de"
+		}
+	},
 	"dashboard": {
 		"header": {
 			"support": "Soporte",
@@ -83,7 +115,8 @@
 			"home": "Inicio",
 			"depot": "Deposito",
 			"transactionsHistory": "Transacciones",
-			"escrow": "Custodia"
+			"escrow": "Custodia",
+			"unipool": "Swap Pool"
 		}
 	},
 	"home": {

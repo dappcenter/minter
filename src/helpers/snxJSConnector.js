@@ -18,6 +18,7 @@ let snxJSConnector = {
 		this.ethersUtils = this.snxJS.ethers.utils;
 		this.uniswapContract = await tronWeb.contract().at(uniswap.address); //new ethers.Contract(uniswap.address, uniswap.abi, this.signer);
 		this.unipoolContract = await tronWeb.contract().at(unipool.address);  //new ethers.Contract(unipool.address, unipool.abi, this.signer);
+		this.oldUnipoolContract = await tronWeb.contract().at(unipool.oldAddress);
 	}
 }
 

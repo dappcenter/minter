@@ -16,6 +16,8 @@ import { ButtonTertiary, ButtonPrimary } from '../../../components/Button';
 
 import UnipoolActions from '../../UnipoolActions';
 
+import UnstakeOldContract from "./OldContract"
+
 const TRANSACTION_DETAILS = {
 	stake: {
 		contractFunction: 'stake',
@@ -33,13 +35,20 @@ const TRANSACTION_DETAILS = {
 		contractFunction: 'exit',
 		gasLimit: 250000,
 	},
+	migrate: {
+		contractFunction: 'exit',
+		gasLimit:250000,
+	}
+
 };
 
 const Stake = ({ t }) => {
-	const { unipoolContract } = snxJSConnector;
+	const { unipoolContract, oldUnipoolContract } = snxJSConnector;
 	const [balances, setBalances] = useState(null);
 	const [currentScenario, setCurrentScenario] = useState({});
 	const [withdrawAmount, setWithdrawAmount] = useState('');
+	const [oldBalance, setOldBalance] = useState(0)
+
 	const {
 		state: {
 			wallet: { currentWallet },
@@ -79,32 +88,15 @@ const Stake = ({ t }) => {
 	useEffect(() => {
 		if (!currentWallet) return;
 		const { uniswapContract, unipoolContract } = snxJSConnector;
-
-		/*unipoolContract.on('Staked', user => {
-			if (user === currentWallet) {
-				fetchData();
+		(async () => {
+			const res = await oldUnipoolContract.balanceOf(currentWallet).call()
+			if ( res) {
+				//console.error("has balance in old contract")
+				setOldBalance(res)
 			}
-		});
 
-		unipoolContract.on('Withdrawn', user => {
-			if (user === currentWallet) {
-				fetchData();
-			}
-		});
-
-		unipoolContract.on('RewardPaid', user => {
-			if (user === currentWallet) {
-				fetchData();
-			}
-		})*/;
-
-		return () => {
-			if (snxJSConnector.initialized) {
-				//unipoolContract.removeAllListeners('Staked');
-				//unipoolContract.removeAllListeners('Withdrawn');
-				//unipoolContract.removeAllListeners('RewardPaid');
-			}
-		};
+		})()
+  
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentWallet]);
 
@@ -196,6 +188,8 @@ const Stake = ({ t }) => {
 						{t('unipool.buttons.exit')}
 					</ButtonAction>
 				</ButtonRow>
+				<UnstakeOldContract />
+		
 			</ButtonBlock>
 		 
 		</Container>

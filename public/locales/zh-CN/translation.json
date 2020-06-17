@@ -81,9 +81,42 @@
 			"home": "主页",
 			"depot": "仓库",
 			"transactionsHistory": "交易记录",
-			"escrow": "托管"
+			"escrow": "托管",
+			"unipool":"交换池"
 		}
 	},
+	"unipool": { 
+		"locked": {
+			"title": "Oikos掉期流动资金池",
+			"subtitle": "如果您要为Oikos Swap上的sTRX / TRX流动性池提供流动性，现在就可以通过在此处投注Oikos Swap LP令牌来获得OKS奖励。"
+		},
+		"unlocked": {
+			"title": "抵押和管理您的掉期LP代币",
+			"subtitle": "在这里，您可以放样/放开sTRX / TRX交换流动资金池代币，领取奖励，或者如果已经放样（包括领取），则完全退出。",
+			 "buttonText": "去交换 ↗",
+			"data": {
+				"balance": "您的余额",
+				"staked": "目前已抵押",
+				"rewardsAvailable": "奖励可用"
+			},
+			"actions": {
+				"staking": "放样",
+				"claiming": "认领",
+				"unstaking": "放心",
+				"exiting": "不承担责任"
+			},
+			"complete": "交易正在进行中！"
+		},
+		"buttons": {
+			"unlock": "开锁",
+			"goToContract": "签约",
+			"stake": "权益掉期代币",
+			"claim": "领取奖励",
+			"unstake": "取消掉期令牌",
+			"exit": "退出：索取和拒绝",
+			"migrate": "迁移到新的奖励合同，您的余额"
+		}
+	},		
 	"home": {
 		"intro": {
 			"title": "您想如何操作？"
