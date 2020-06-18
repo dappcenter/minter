@@ -4,7 +4,7 @@ import orderBy from 'lodash/orderBy';
 import styled from 'styled-components';
 import { useTranslation, withTranslation } from 'react-i18next';
 import { format, isWithinInterval } from 'date-fns';
-import { formatCurrency } from '../../../helpers/formatters';
+import { formatCurrency, bigNumberFormatter} from '../../../helpers/formatters';
 import Select from '../../../components/Select';
 
 import Spinner from '../../../components/Spinner';
@@ -69,9 +69,12 @@ const useGetTransactions = (walletAddress, networkName) => {
 				]);
 
 				const [transactions] = await Promise.all(response.map(result => result.json()));
+
+
 				const clearedDeposits = [];
 				//filtering out outgoing ClearedDeposits
 				const filteredTransactions = transactions
+				
 					//.filter(
 					//	tx => tx.event !== 'ClearedDeposit' && EVENT_LIST.find(event => event.key === tx.event)
 					//)
@@ -83,6 +86,8 @@ const useGetTransactions = (walletAddress, networkName) => {
 							...eventInfo,
 						};
 					});
+					 
+
 
 				setData({
 					loading: false,
@@ -105,7 +110,7 @@ const getEventInfo = data => {
 	let { label, icon } = data;
 	switch (event) {
 		case 'FeesClaimed':
-			amount = `${formatCurrency(data.snxRewards || 0)} OKS`;
+			amount = `${formatCurrency(Number(bigNumberFormatter(data.snxRewards._hex.toString() || 0)).toFixed(3))} OKS`
 			break;
 		case 'SynthExchange':
 			const fromCurrency = data.exchangeFromCurrency.replace(/\u0000/g, '');
