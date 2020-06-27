@@ -122,7 +122,7 @@ const sendTransaction = async (currency, amount, destination, settings) => {
 	if (currency === 'OKS') {
 		console.log('signerObject', snxJSConnector.signer);
 
-		const txHash = await snxJSConnector.snxJS.Synthetix.contract
+		const txHash = await snxJSConnector.snxJS.ProxyERC20.contract
 			.transfer(destination, amount)
 			.send(settings);
 		return { hash: txHash };
