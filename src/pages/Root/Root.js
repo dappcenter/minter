@@ -28,6 +28,7 @@ const renderCurrentPage = currentPage => {
 	}
 };
 
+/*
 const Announcement = styled.div`
 	width: 100%;
 	display: block;
@@ -46,6 +47,7 @@ const Announcement = styled.div`
 		text-decoration: none;
 	}
 `;
+*/
 
 const Root = () => {
 	const [isOnMaintenance, setIsOnMaintenance] = useState(false);
@@ -83,11 +85,13 @@ const Root = () => {
 	return (
 		<Suspense fallback={<div></div>}>
 			<RootWrapper>
+				{/*
 				<Announcement>
 					<a href="https://hoo.com/labs/detail/oks2">
 					Oikos IEO on Hoo.com sold out. Thanks to all participants ❤️. Stay tuned for listing announcement. 🚀
 					</a>
 				</Announcement>
+        */}
 				{isOnMaintenance ? <MaintenanceMessage /> : renderCurrentPage(currentPage)}
 				<NotificationCenter></NotificationCenter>
 			</RootWrapper>
