@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"author": "Oikos",
 	"dependencies": {
-		"@oikos/oikos-js": "^0.5.0",
+		"@oikos/oikos-js": "^0.6.2",
 		"@oikos/swap": "^0.6.4",
 		"@rehooks/component-size": "^1.0.3",
 		"browserslist": "^4.8.2",
@@ -23,7 +23,7 @@
 		"react": "^16.8.6",
 		"react-app-polyfill": "^1.0.1",
 		"react-calendar": "^2.19.2",
-		"react-dev-utils": "^9.0.1",
+		"react-dev-utils": "^9.1.0",
 		"react-dom": "^16.8.6",
 		"react-dropzone": "^10.1.9",
 		"react-i18next": "^10.11.2",
