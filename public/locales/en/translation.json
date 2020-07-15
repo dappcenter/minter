@@ -400,7 +400,7 @@
 	"unipoolSETH": {
 		"title": "Uniswap sETH LP Token Rewards",
 		"locked": {
-			"subtitle": "First approve the Rewards contract to transfer your sETH UNI-V1 tokens for staking.",
+			"subtitle": "If you're contributing liquidity to the sETH liquidity pool on Oikos Swap, you can now earn OKS rewards by staking your Oikos Swap LP token here.",
 			"transaction": "Setting SWAP-V1 LP token allowance"
 		},
 		"unlocked": {

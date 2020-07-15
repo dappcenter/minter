@@ -14,7 +14,7 @@ import { PageTitle, PLarge } from '../../../components/Typography';
 import DataBox from '../../../components/DataBox';
 import { ButtonTertiary, ButtonPrimary } from '../../../components/Button';
 
-import UnipoolActions from '../../UnipoolActions';
+import UnipoolActions from '../../UnipoolActionsETH';
 
 const ButtonRow = styled.div`
 	display: flex;

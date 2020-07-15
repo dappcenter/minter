@@ -24,7 +24,7 @@ const SliderController = ({ amount, label, contractFunction, gasLimit, onDestroy
 	} = useContext(Store);
 
 	useEffect(() => {
-		const { unipoolContract } = snxJSConnector;
+		const { unipoolstrxContract } = snxJSConnector;
 		const run = async () => {
 			if (!hasLoaded) return;
 			try {
@@ -33,10 +33,10 @@ const SliderController = ({ amount, label, contractFunction, gasLimit, onDestroy
 					//gasLimit,
 				};
 				const transaction = param
-					? await unipoolContract[contractFunction](param).send(transactionSettings)
-					: await unipoolContract[contractFunction]().send(transactionSettings);
+					? await unipoolstrxContract[contractFunction](param).send(transactionSettings)
+					: await unipoolstrxContract[contractFunction]().send(transactionSettings);
 
-				console.log(transaction)
+				console.log(transaction);
 				if (transaction) {
 					setTransactionInfo({ transactionHash: transaction });
 					createTransaction(

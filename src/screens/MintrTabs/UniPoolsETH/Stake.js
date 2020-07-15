@@ -14,7 +14,7 @@ import { PageTitle, PLarge } from '../../../components/Typography';
 import DataBox from '../../../components/DataBox';
 import { ButtonTertiary, ButtonPrimary } from '../../../components/Button';
 
-import UnipoolActions from '../../UnipoolActions';
+import UnipoolActions from '../../UnipoolActionsETH';
 
 import UnstakeOldContract from './OldContract';
 
@@ -41,7 +41,7 @@ const TRANSACTION_DETAILS = {
 	},
 };
 
-const Stake = ({ t }) => {
+const Stake = ({ t, onDestroy, goBack }) => {
 	const { unipoolsethContract, oldunipoolsethContract } = snxJSConnector;
 	const [balances, setBalances] = useState(null);
 	const [currentScenario, setCurrentScenario] = useState({});
@@ -102,10 +102,12 @@ const Stake = ({ t }) => {
 		<Container>
 			<UnipoolActions {...currentScenario} onDestroy={() => setCurrentScenario({})} />
 			<Navigation>
+				<ButtonTertiary onClick={goBack}>{t('button.navigation.cancel')}</ButtonTertiary>
+
 				<ButtonTertiary
 					as="a"
 					target="_blank"
-					href="https://swap.oikos.cash/swap/TQcPMpkEp7Vq4RxEMhEtHWkE5wGhEtbNDz"
+					href="https://swap.oikos.cash/swap/TQfpdspC8hKxNzWPMzjq9aEQyjuUwa3VvQ"
 				>
 					{t('unipool.unlocked.buttonText')}
 				</ButtonTertiary>

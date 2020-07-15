@@ -14,7 +14,7 @@ import { PageTitle, PLarge } from '../../../components/Typography';
 import DataBox from '../../../components/DataBox';
 import { ButtonTertiary, ButtonPrimary } from '../../../components/Button';
 
-import UnipoolActions from '../../UnipoolActions';
+import UnipoolActions from '../../UnipoolActionsTRX';
 
 const ButtonRow = styled.div`
 	display: flex;
@@ -58,25 +58,25 @@ export default withTranslation()(({ t }) => {
 
 	const migrate = async () => {
 		try {
-			console.log({ oldBalance })
+			console.log({ oldBalance });
 			await oldUnipoolContract.withdraw(oldBalance).send();
 			await unipoolContract.stake(oldBalance).send();
-			setIsMigrationPending(true)
+			setIsMigrationPending(true);
 		} catch (err) {
 			console.error(err);
 		}
 	};
 	if (isMigrated) {
-		return <></>
+		return <></>;
 	}
 	if (isMigrationPending) {
 		return (
 			<ButtonRow>
 				<ButtonAction
-				disabled={true}
+					disabled={true}
 					style={{
 						marginRight: '0px',
-						backgroundColor:"red"
+						backgroundColor: 'red',
 					}}
 				>
 					Your LP Tokens were moved to the new contract, please refresh the page in a few seconds.
@@ -93,7 +93,7 @@ export default withTranslation()(({ t }) => {
 					backgroundColor: 'red',
 				}}
 			>
-				{t('unipool.buttons.migrate')} {(oldBalance / 1e6)} SWAP
+				{t('unipool.buttons.migrate')} {oldBalance / 1e6} SWAP
 			</ButtonAction>
 		</ButtonRow>
 	);

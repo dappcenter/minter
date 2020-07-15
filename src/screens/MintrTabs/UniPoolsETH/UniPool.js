@@ -13,7 +13,7 @@ import Spinner from '../../../components/Spinner';
 import SetAllowance from './SetAllowance';
 import Stake from './Stake';
 
-const UniPool = () => {
+const UniPool = ({ goBack }) => {
 	const [hasAllowance, setAllowance] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const {
@@ -74,7 +74,7 @@ const UniPool = () => {
 			) : !hasAllowance ? (
 				<SetAllowance />
 			) : (
-				<Stake />
+				<Stake goBack={goBack} />
 			)}
 		</>
 	);

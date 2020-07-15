@@ -267,7 +267,7 @@ export default {
 		],
 	},
 	unipoolseth: {
-		oldAddress: '415ea3ad9cfa4b303689cdd78e63cd2be9266d3173',
+		oldAddress: '41b14f2fb611e32725e9fb5fe2e285390e9ab60feb',
 		address: '41b14f2fb611e32725e9fb5fe2e285390e9ab60feb',
 		abi: [
 			{

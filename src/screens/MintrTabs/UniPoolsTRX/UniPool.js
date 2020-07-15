@@ -13,7 +13,7 @@ import Spinner from '../../../components/Spinner';
 import SetAllowance from './SetAllowance';
 import Stake from './Stake';
 
-const UniPool = () => {
+const UniPool = ({ goBack }) => {
 	const [hasAllowance, setAllowance] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 
@@ -48,16 +48,16 @@ const UniPool = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [fetchAllowance]);
 
-	useEffect(
+	/*useEffect(
 		onDestroy => {
 			if (!currentWallet) return;
 			const { uniswapContract, unipoolContract } = snxJSConnector;
 
-			/*uniswapContract.on('Approval', (owner, spender) => {
+			uniswapContract.on('Approval', (owner, spender) => {
 			if (owner === currentWallet && spender === unipoolContract.address) {
 				setAllowance(true);
 			}
-		});*/
+		});
 
 			return () => {
 				if (snxJSConnector.initialized) {
@@ -67,7 +67,7 @@ const UniPool = () => {
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 		},
 		[currentWallet]
-	);
+	);*/
 
 	return (
 		<>
@@ -79,7 +79,7 @@ const UniPool = () => {
 				<SetAllowance />
 			) : (
 				<>
-					<Stake />
+					<Stake goBack={goBack} />
 				</>
 			)}
 		</>
