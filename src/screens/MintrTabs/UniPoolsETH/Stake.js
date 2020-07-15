@@ -16,7 +16,7 @@ import { ButtonTertiary, ButtonPrimary } from '../../../components/Button';
 
 import UnipoolActions from '../../UnipoolActions';
 
-import UnstakeOldContract from "./OldContract"
+import UnstakeOldContract from './OldContract';
 
 const TRANSACTION_DETAILS = {
 	stake: {
@@ -37,17 +37,16 @@ const TRANSACTION_DETAILS = {
 	},
 	migrate: {
 		contractFunction: 'exit',
-		gasLimit:250000,
-	}
-
+		gasLimit: 250000,
+	},
 };
 
 const Stake = ({ t }) => {
-	const { unipoolContract, oldUnipoolContract } = snxJSConnector;
+	const { unipoolsethContract, oldunipoolsethContract } = snxJSConnector;
 	const [balances, setBalances] = useState(null);
 	const [currentScenario, setCurrentScenario] = useState({});
 	const [withdrawAmount, setWithdrawAmount] = useState('');
-	const [oldBalance, setOldBalance] = useState(0)
+	const [oldBalance, setOldBalance] = useState(0);
 
 	const {
 		state: {
@@ -59,11 +58,11 @@ const Stake = ({ t }) => {
 	const fetchData = useCallback(async () => {
 		if (!snxJSConnector.initialized) return;
 		try {
-			const { uniswapContract, unipoolContract } = snxJSConnector;
+			const { uniswapsethContract, unipoolsethContract } = snxJSConnector;
 			const [univ1Held, univ1Staked, rewards] = await Promise.all([
-				uniswapContract.balanceOf(currentWallet).call(),
-				unipoolContract.balanceOf(currentWallet).call(),
-				unipoolContract.earned(currentWallet).call(),
+				uniswapsethContract.balanceOf(currentWallet).call(),
+				unipoolsethContract.balanceOf(currentWallet).call(),
+				unipoolsethContract.earned(currentWallet).call(),
 			]);
 			setBalances({
 				univ1Held: formatUniv1(univ1Held),
@@ -81,22 +80,21 @@ const Stake = ({ t }) => {
 
 	useEffect(() => {
 		fetchData();
-		const interval = setInterval(() => fetchData(), 1000)
-		return () => clearInterval(interval)
+		const interval = setInterval(() => fetchData(), 1000);
+		return () => clearInterval(interval);
 	}, [fetchData]);
 
 	useEffect(() => {
 		if (!currentWallet) return;
-		const { uniswapContract, unipoolContract } = snxJSConnector;
+		const { uniswapsethContract, unipoolsethContract } = snxJSConnector;
 		(async () => {
-			const res = await oldUnipoolContract.balanceOf(currentWallet).call()
-			if ( res) {
+			/*const res = await oldunipoolsethContract.balanceOf(currentWallet).call();
+			if (res) {
 				//console.error("has balance in old contract")
-				setOldBalance(res)
-			}
+				setOldBalance(res);
+			}*/
+		})();
 
-		})()
-  
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentWallet]);
 
@@ -113,7 +111,7 @@ const Stake = ({ t }) => {
 				</ButtonTertiary>
 			</Navigation>
 			<PageTitle>{t('unipool.unlocked.title')}</PageTitle>
-			<PLarge>{t('unipool.unlocked.subtitle')}</PLarge>
+			<PLarge>{t('unipoolSETH.unlocked.subtitle')}</PLarge>
 			<BoxRow>
 				<DataBox
 					heading={t('unipool.unlocked.data.balance')}
@@ -189,9 +187,7 @@ const Stake = ({ t }) => {
 					</ButtonAction>
 				</ButtonRow>
 				<UnstakeOldContract />
-		
 			</ButtonBlock>
-		 
 		</Container>
 	);
 };

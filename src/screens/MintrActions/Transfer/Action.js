@@ -22,9 +22,8 @@ const Action = ({
 	setSendAmount,
 	setSendDestination,
 	isFetchingGasLimit,
-	gasEstimateError
+	gasEstimateError,
 }) => {
-	
 	return (
 		<SlidePage>
 			<Container>
@@ -69,18 +68,22 @@ const Action = ({
 						<SimpleInput
 							onChange={e => setSendDestination(e.target.value)}
 							value={sendDestination}
-							placeholder={"e.g. TDjV35Zw..."}
-							
+							placeholder={'e.g. TDjV35Zw...'}
 						/>
 					</Form>
 				</Middle>
 				<Bottom>
-
 					<ButtonPrimary
-						disabled={!sendDestination || !sendAmount || gasEstimateError || isFetchingGasLimit || !window.tronWeb.isAddress(sendDestination)}
+						disabled={
+							!sendDestination ||
+							!sendAmount ||
+							gasEstimateError ||
+							isFetchingGasLimit ||
+							!window.tronWeb.isAddress(sendDestination)
+						}
 						onClick={onSend}
 						margin="auto"
- 					>
+					>
 						{t('mintrActions.send.action.buttons.send')}
 					</ButtonPrimary>
 				</Bottom>

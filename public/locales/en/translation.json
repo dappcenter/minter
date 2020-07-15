@@ -39,7 +39,7 @@
 				"subtitle": "Minter couldn't access your wallet.",
 				"retry": "Retry"
 			},
-			"addWallet":{
+			"addWallet": {
 				"placeholder": "Wallet address",
 				"buttonText": "Add"
 			}
@@ -86,9 +86,10 @@
 			"depot": "Depot",
 			"transactionsHistory": "Transactions",
 			"escrow": "Escrow",
-			"unipool": "Swap Pool"			
+			"lpRewards": "LP rewards"
 		}
 	},
+
 	"home": {
 		"intro": {
 			"title": "What would you like to do?"
@@ -317,16 +318,16 @@
 			"actionDescription": "Vesting:"
 		}
 	},
-	"announcement":"Oikos IEO on Hoo.com ended. Thanks to all participants ❤️. Stay tuned for listing announcement. 🚀",
-	"unipool": { 
+	"announcement": "Oikos IEO on Hoo.com ended. Thanks to all participants ❤️. Stay tuned for listing announcement. 🚀",
+	"unipool": {
 		"locked": {
 			"title": "Oikos Swap Liquidity Pool",
-			"subtitle": "If you're contributing liquidity to the sTRX/TRX liquidity pool on Oikos Swap, you can now earn OKS rewards by staking your Oikos Swap LP token here."
+			"subtitle": "If you're contributing liquidity to the sTRX liquidity pool on Oikos Swap, you can now earn OKS rewards by staking your Oikos Swap LP token here."
 		},
 		"unlocked": {
 			"title": "Stake & manage your Swap LP Tokens",
-			"subtitle": "Here you can stake/unstake your sTRX/TRX Swap liquidty pool tokens, claim rewards, or exit completely if you're already staking (includes claiming).",
-			 "buttonText": "Go to swap ↗",
+			"subtitle": "Here you can stake/unstake your sTRX Swap liquidty pool tokens, claim rewards, or exit completely if you're already staking (includes claiming).",
+			"buttonText": "Go to swap ↗",
 			"data": {
 				"balance": "Your balance",
 				"staked": "Currently staked",
@@ -349,7 +350,63 @@
 			"exit": "exit: claim & unstake",
 			"migrate": "migrate to new rewards contract your balance of"
 		}
-	},	
+	},
+
+	"lpRewards": {
+		"intro": {
+			"title": "Please choose a pool",
+			"completed": "Completed"
+		},
+		"actions": {
+			"unipoolSETH": {
+				"title": "UNIPOOL sETH"
+			},
+			"unipoolSTRX": {
+				"title": "UNIPOOL sTRX"
+			}
+		},
+		"shared": {
+			"unlocked": {
+				"link": "See blog post",
+				"complete": "Transaction in progress!"
+			},
+			"data": {
+				"balance": "Your balance",
+				"staked": "Currently staked",
+				"rewardsAvailable": "Rewards available"
+			},
+			"actions": {
+				"staking": "Staking",
+				"claiming": "Claiming",
+				"unstaking": "Unstaking",
+				"exiting": "Unstaking & claiming",
+				"settling": "Settling"
+			},
+			"buttons": {
+				"unlock": "unlock",
+				"goToContract": "Go to contract",
+				"stake": "Stake tokens",
+				"claim": "Claim rewards",
+				"unstake": "Unstake tokens",
+				"exit": "exit: claim & unstake",
+				"exit-old": "Exit old rewards pool",
+				"settle": "Settle"
+			},
+			"info": {
+				"weeklyRewards": "Weekly rewards"
+			}
+		}
+	},
+	"unipoolSETH": {
+		"title": "Uniswap sETH LP Token Rewards",
+		"locked": {
+			"subtitle": "First approve the Rewards contract to transfer your sETH UNI-V1 tokens for staking.",
+			"transaction": "Setting SWAP-V1 LP token allowance"
+		},
+		"unlocked": {
+			"subtitle": "Here you can stake/unstake your sETH Swap liquidty pool tokens, claim rewards, or exit completely if you're already staking (includes claiming)."
+		}
+	},
 	"transactions": {
 		"filters": {
 			"type": "Type",
@@ -400,7 +457,7 @@
 		},
 		"error": {
 			"title": "Something went wrong...",
-			"subtitle": "Code:", 
+			"subtitle": "Code:",
 			"type": {
 				"userDenied": "User denied transaction signature",
 				"generic": "Error"

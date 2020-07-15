@@ -2,7 +2,7 @@ import { SynthetixJs } from '@oikos/oikos-js';
 import { getTronNetwork } from './networkHelper';
 import contracts from './contracts';
 
-const { uniswap, unipool } = contracts;
+const { uniswapSTRX, uniswapSETH, unipoolstrx, unipoolseth } = contracts;
 
 let snxJSConnector = {
 	initialized: false,
@@ -16,11 +16,14 @@ let snxJSConnector = {
 		this.provider = this.signer.provider;
 		this.utils = this.snxJS.utils;
 		this.ethersUtils = this.snxJS.ethers.utils;
-		this.uniswapContract = await tronWeb.contract().at(uniswap.address); //new ethers.Contract(uniswap.address, uniswap.abi, this.signer);
-		this.unipoolContract = await tronWeb.contract().at(unipool.address);  //new ethers.Contract(unipool.address, unipool.abi, this.signer);
-		this.oldUnipoolContract = await tronWeb.contract().at(unipool.oldAddress);
-	}
-}
+		this.uniswapstrxContract = await tronWeb.contract().at(uniswapSTRX.address); //new ethers.Contract(uniswap.address, uniswap.abi, this.signer);
+		this.uniswapsethContract = await tronWeb.contract().at(uniswapSETH.address);
+		this.unipoolstrxContract = await tronWeb.contract().at(unipoolstrx.address);
+		this.oldUnipoolstrxContract = await tronWeb.contract().at(unipoolstrx.oldAddress);
+		this.unipoolsethContract = await tronWeb.contract().at(unipoolseth.address);
+		this.oldUnipoolsethContract = await tronWeb.contract().at(unipoolseth.oldAddress);
+	},
+};
 
 const connectToTronlink = async (networkId, networkName) => {
 	try {

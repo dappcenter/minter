@@ -25,19 +25,17 @@ const SetAllowance = ({ t }) => {
 
 	const onUnlock = async () => {
 		const { parseEther } = snxJSConnector.utils;
-		const { uniswapContract, unipoolContract } = snxJSConnector;
+		const { uniswapsethContract, unipoolsethContract } = snxJSConnector;
 		try {
 			setError(null);
 
-			const gasEstimate = 0;/*await uniswapContract.estimate.approve(
-				unipoolContract.address,
+			const gasEstimate = 0; /*await uniswapsethContract.estimate.approve(
+				unipoolsethContract.address,
 				parseEther(ALLOWANCE_LIMIT.toString())
 			);*/
-			const transactionHash = await uniswapContract.approve(
-				unipoolContract.address,
-				parseEther(ALLOWANCE_LIMIT.toString()) 
- 
-			).send();
+			const transactionHash = await uniswapsethContract
+				.approve(unipoolsethContract.address, parseEther(ALLOWANCE_LIMIT.toString()))
+				.send();
 			if (transactionHash) {
 				createTransaction(
 					{
@@ -57,10 +55,9 @@ const SetAllowance = ({ t }) => {
 	return (
 		<>
 			<TitleContainer>
-				 
 				<PageTitle>{t('unipool.locked.title')}</PageTitle>
 			</TitleContainer>
-			<PLarge>{t('unipool.locked.subtitle')}</PLarge>
+			<PLarge>{t('unipoolSETH.locked.subtitle')}</PLarge>
 			<ButtonRow>
 				<ButtonPrimary onClick={onUnlock}>{t('unipool.buttons.unlock')}</ButtonPrimary>
 			</ButtonRow>
