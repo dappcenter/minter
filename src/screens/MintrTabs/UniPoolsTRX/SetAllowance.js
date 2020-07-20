@@ -33,7 +33,7 @@ const SetAllowance = ({ t }) => {
 				unipoolContract.address,
 				parseEther(ALLOWANCE_LIMIT.toString())
 			);*/
-			const transactionHash = await uniswapContract
+			const transactionHash = await uniswapstrxContract
 				.approve(unipoolContract.address, parseEther(ALLOWANCE_LIMIT.toString()))
 				.send();
 			if (transactionHash) {
