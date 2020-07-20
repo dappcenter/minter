@@ -25,7 +25,7 @@ const SetAllowance = ({ t }) => {
 
 	const onUnlock = async () => {
 		const { parseEther } = snxJSConnector.utils;
-		const { uniswapContract, unipoolContract } = snxJSConnector;
+		const { uniswapstrxContract, unipoolstrxContract } = snxJSConnector;
 		try {
 			setError(null);
 
