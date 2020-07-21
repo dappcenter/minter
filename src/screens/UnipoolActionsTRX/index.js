@@ -36,7 +36,7 @@ const SliderController = ({ amount, label, contractFunction, gasLimit, onDestroy
 					? await unipoolstrxContract[contractFunction](param).send(transactionSettings)
 					: await unipoolstrxContract[contractFunction]().send(transactionSettings);
 
-				console.log(transaction);
+				//console.log(transaction);
 				if (transaction) {
 					setTransactionInfo({ transactionHash: transaction });
 					createTransaction(

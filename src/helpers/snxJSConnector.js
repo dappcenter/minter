@@ -2,26 +2,29 @@ import { SynthetixJs } from '@oikos/oikos-js';
 import { getTronNetwork } from './networkHelper';
 import contracts from './contracts';
 
+console.log({ contracts });
 const { uniswapSTRX, uniswapSETH, unipoolstrx, unipoolseth } = contracts;
 
 let snxJSConnector = {
 	initialized: false,
 	signers: SynthetixJs.signers,
-	setContractSettings: async function(contractSettings) {
+	setContractSettings: function(contractSettings) {
 		this.initialized = true;
 		contractSettings.tronWeb = window.tronWeb;
 		this.snxJS = new SynthetixJs(contractSettings);
+		console.log(contractSettings);
+
 		this.synths = this.snxJS.contractSettings.synths;
 		this.signer = this.snxJS.contractSettings.signer;
 		this.provider = this.signer.provider;
 		this.utils = this.snxJS.utils;
 		this.ethersUtils = this.snxJS.ethers.utils;
-		this.uniswapstrxContract = await tronWeb.contract().at(uniswapSTRX.address); //new ethers.Contract(uniswap.address, uniswap.abi, this.signer);
-		this.uniswapsethContract = await tronWeb.contract().at(uniswapSETH.address);
-		this.unipoolstrxContract = await tronWeb.contract().at(unipoolstrx.address);
-		this.oldUnipoolstrxContract = await tronWeb.contract().at(unipoolstrx.oldAddress);
-		this.unipoolsethContract = await tronWeb.contract().at(unipoolseth.address);
-		this.oldUnipoolsethContract = await tronWeb.contract().at(unipoolseth.oldAddress);
+		this.uniswapstrxContract = contractSettings._contracts[0];
+		this.unipoolstrxContract = contractSettings._contracts[1];
+		this.oldUnipoolstrxContract = contractSettings._contracts[2];
+		this.uniswapsethContract = contractSettings._contracts[3];
+		this.unipoolsethContract = contractSettings._contracts[4];
+		this.oldUnipoolsethContract = contractSettings._contracts[5];
 	},
 };
 
@@ -150,14 +153,15 @@ const getSignerConfig = ({ type, networkId, derivationPath }) => {
 	return {};
 };
 
-export const setSigner = ({ type, networkId, derivationPath }) => {
+export const setSigner = ({ type, networkId, derivationPath, _contracts }) => {
 	const signer = new snxJSConnector.signers[type](
 		getSignerConfig({ type, networkId, derivationPath })
 	);
-
+	console.log({ _contracts });
 	snxJSConnector.setContractSettings({
 		networkId,
 		signer,
+		_contracts,
 	});
 };
 
@@ -170,7 +174,25 @@ export const connectToWallet = async ({ wallet, derivationPath }) => {
 			unlockReason: 'NetworkNotSupported',
 		};
 	}
-	setSigner({ type: wallet, networkId, derivationPath });
+
+	let _contracts = [];
+
+	let uniswapstrxContract = await tronWeb.contract().at(contracts.uniswapSTRX.address);
+	let unipoolstrxContract = await tronWeb.contract().at(contracts.unipoolstrx.address);
+	let oldUnipoolstrxContract = await tronWeb.contract().at(unipoolstrx.oldAddress);
+
+	let uniswapsethContract = await tronWeb.contract().at(contracts.uniswapSETH.address);
+	let unipoolsethContract = await tronWeb.contract().at(unipoolseth.address);
+	let oldUnipoolsethContract = await tronWeb.contract().at(unipoolseth.oldAddress);
+
+	_contracts.push(uniswapstrxContract);
+	_contracts.push(unipoolstrxContract);
+	_contracts.push(oldUnipoolstrxContract);
+	_contracts.push(uniswapsethContract);
+	_contracts.push(unipoolsethContract);
+	_contracts.push(oldUnipoolsethContract);
+
+	setSigner({ type: wallet, networkId, derivationPath, _contracts });
 
 	switch (wallet) {
 		case 'TronLink':

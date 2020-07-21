@@ -28,6 +28,8 @@ const UniPool = ({ goBack }) => {
 
 		if (!snxJSConnector.initialized) return;
 		const { uniswapstrxContract, unipoolstrxContract } = snxJSConnector;
+
+		console.log({ uniswapstrxContract, unipoolstrxContract });
 		try {
 			setIsLoading(true);
 			const allowance = await uniswapstrxContract
@@ -48,16 +50,16 @@ const UniPool = ({ goBack }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [fetchAllowance]);
 
-	/*useEffect(
+	useEffect(
 		onDestroy => {
 			if (!currentWallet) return;
-			const { uniswapContract, unipoolContract } = snxJSConnector;
+			const { uniswapstrxContract, unipoolstrxContract } = snxJSConnector;
 
-			uniswapContract.on('Approval', (owner, spender) => {
-			if (owner === currentWallet && spender === unipoolContract.address) {
-				setAllowance(true);
-			}
-		});
+			/*uniswapstrxContract.on('Approval', (owner, spender) => {
+				if (owner === currentWallet && spender === unipoolstrxContract.address) {
+					setAllowance(true);
+				}
+			});*/
 
 			return () => {
 				if (snxJSConnector.initialized) {
@@ -67,7 +69,7 @@ const UniPool = ({ goBack }) => {
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 		},
 		[currentWallet]
-	);*/
+	);
 
 	return (
 		<>

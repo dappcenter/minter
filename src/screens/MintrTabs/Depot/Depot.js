@@ -199,7 +199,7 @@ const useGetDepotEvents = (walletAddress, networkName) => {
 				const totalDepositsCleared = 0; //sumBy(depositsCleared, 'toAmount');
 				const totalDepositsRemoved = sumBy(depositsRemoved, 'value');
 
-				console.log('depositsMade', depositsMade);
+				//console.log('depositsMade', depositsMade);
 
 				const depositsMadeFiltered = depositsMade
 					.filter(depositMade => {
@@ -228,12 +228,12 @@ const useGetDepotEvents = (walletAddress, networkName) => {
 						};
 					});
 
-				console.log('values', {
+				/*console.log('values', {
 					totalDepositsMade,
 					totalDepositsCleared,
 					totalDepositsRemoved,
 					depositsMadeFiltered,
-				});
+				});*/
 
 				setData({
 					loadingEvents: false,

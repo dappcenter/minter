@@ -50,9 +50,8 @@ const LPRewards = () => {
 								_name = 'unipoolSETH';
 								_icon = 'sETH';
 							}
-							console.log(`lpRewards.actions.${_name}.title`);
 							return (
-								<Button onClick={() => setCurrentPool(name)}>
+								<Button onClick={() => setCurrentPool(name)} key={Math.random()}>
 									<ButtonContainer>
 										<ActionImage src={`/images/${_icon}-icon.svg`} big />
 										<H1>{t(`lpRewards.actions.${_name}.title`)}</H1>

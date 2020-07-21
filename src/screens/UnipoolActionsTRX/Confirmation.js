@@ -18,7 +18,6 @@ const Confirmation = ({ t, onDestroy, walletType, amount, label }) => {
 				</Navigation>
 				<Top>
 					<Intro>
-						<ActionImage src={`/images/wallets/${walletType.toLowerCase()}.svg`} />
 						<PageTitle>{t('transactionProcessing.confirmation.title')}</PageTitle>
 						<PLarge>
 							<Trans i18nKey="transactionProcessing.confirmation.subtitle">
@@ -37,7 +36,6 @@ const Confirmation = ({ t, onDestroy, walletType, amount, label }) => {
 					<Spinner margin="auto" />
 					<Subtext>{t('transactionProcessing.confirmation.loading')}</Subtext>
 				</Loading>
-
 			</Container>
 		</SlidePage>
 	);
