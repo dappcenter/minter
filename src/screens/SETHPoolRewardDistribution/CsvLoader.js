@@ -49,7 +49,7 @@ export default ({ onDataLoaded }) => {
 };
 
 const getColor = props => {
-	console.log(props);
+	//console.log(props);
 
 	if (props.isDragAccept) {
 		return COLORS.brandGreen;

@@ -82,7 +82,7 @@ const useGetGasEstimate = (baseSynth, baseAmount, currentWallet) => {
 					baseAmount === baseSynth.balance
 						? baseSynth.rawBalance
 						: snxJSConnector.utils.parseEther(baseAmount.toString());
-				gasEstimate = 0;//await snxJSConnector.snxJS.Synthetix.contract.estimate.exchange(
+				gasEstimate = 0; //await snxJSConnector.snxJS.Synthetix.contract.estimate.exchange(
 				//	bytesFormatter(baseSynth.name),
 				//	amountToExchange,
 				//	bytesFormatter('sUSD')
@@ -124,8 +124,7 @@ const Trade = ({ onDestroy }) => {
 				baseAmount === baseSynth.balance
 					? baseSynth.rawBalance
 					: snxJSConnector.utils.parseEther(baseAmount.toString());
-			console.log("onTrade", baseAmount.toString());
-
+			//console.log("onTrade", baseAmount.toString());
 
 			handleNext(1);
 			const transaction = await snxJSConnector.snxJS.Synthetix.exchange(

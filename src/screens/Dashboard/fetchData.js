@@ -147,7 +147,7 @@ const getSynths = async walletAddress => {
 		//.filter((synth) => {
 		//	return synth !== "sBTT" && synth !== "iBTT"
 		//});
-		console.log({ synths });
+		//console.log({ synths });
 
 		const result = await Promise.all(
 			synths.map(async synth => {
@@ -159,11 +159,11 @@ const getSynths = async walletAddress => {
 			})
 		);
 
-		console.log({ result });
+		//console.log({ result });
 		const balances = await Promise.all(
 			result.map((balance, i) => {
 				return retry(() => {
-					console.log(`getting ${synths[i]}`);
+					//console.log(`getting ${synths[i]}`);
 					return snxJSConnector.snxJS.Synthetix.effectiveValue(
 						bytesFormatter(synths[i]),
 						balance,

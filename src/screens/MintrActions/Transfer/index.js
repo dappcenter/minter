@@ -116,11 +116,10 @@ const useGetGasEstimate = (currency, amount, destination) => {
 };
 
 const sendTransaction = async (currency, amount, destination, settings) => {
-
 	const sunDecimals = 6;
 	if (!currency) return null;
 	if (currency === 'OKS') {
-		console.log('signerObject', snxJSConnector.signer);
+		//console.log('signerObject', snxJSConnector.signer);
 
 		const txHash = await snxJSConnector.snxJS.ProxyERC20.contract
 			.transfer(destination, amount)
@@ -129,12 +128,12 @@ const sendTransaction = async (currency, amount, destination, settings) => {
 	} else if (currency === 'TRX') {
 		const res = await window.tronWeb.transactionBuilder.sendTrx(
 			destination,
-			Number(amount) / (10 ** (18- sunDecimals)),
+			Number(amount) / 10 ** (18 - sunDecimals),
 			window.tronWeb.defaultAddress.base58
 		);
-		const signedTransaction = await window.tronWeb.trx.sign(res);	
+		const signedTransaction = await window.tronWeb.trx.sign(res);
 		const obj = await window.tronWeb.trx.sendRawTransaction(signedTransaction); // error
-		console.log(obj.transaction.txID);
+		//console.log(obj.transaction.txID);
 		return { hash: obj.transaction.txID };
 	} else
 		return snxJSConnector.snxJS[currency].contract.transfer(destination, amount).send(settings);
@@ -176,7 +175,6 @@ const Send = ({ onDestroy }) => {
 
 			//console.log('got tx', transaction);
 
-		
 			if (transaction) {
 				setTransactionInfo({ transactionHash: transaction.hash });
 				createTransaction(

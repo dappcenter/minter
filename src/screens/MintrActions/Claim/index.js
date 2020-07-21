@@ -59,7 +59,7 @@ const useGetFeeData = walletAddress => {
 					snxJSConnector.snxJS.ExchangeRates.rateForCurrency(xdrBytes),
 				]);
 				const formattedXdrRate = bigNumberFormatter(xdrRate);
-				console.log('got feesByPeriod', feesByPeriod.results);
+				//console.log('got feesByPeriod', feesByPeriod.results);
 				const formattedFeesByPeriod = feesByPeriod.results.slice(1).map(([fee, reward], i) => {
 					return {
 						fee: bigNumberFormatter(fee) * formattedXdrRate,

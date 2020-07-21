@@ -26,7 +26,7 @@ const SLIDE_COUNT = 4;
 
 console.log(snxJSConnector);
 
-const onWalletClick = ({ wallet, derivationPath }, dispatch) => {
+const on//alletClick = ({ wallet, derivationPath }, dispatch) => {
 	return async () => {
 		const walletStatus = await connectToWallet({ wallet, derivationPath });
 		updateWalletStatus({ ...walletStatus, availableWallets: [] }, dispatch);

@@ -23,7 +23,7 @@ const UniPool = ({ goBack }) => {
 	} = useContext(Store);
 
 	const fetchAllowance = useCallback(async () => {
-		console.log({ snxJSConnector });
+		//console.log({ snxJSConnector });
 
 		if (!snxJSConnector.initialized) return;
 		const { uniswapsethContract, unipoolsethContract } = snxJSConnector;

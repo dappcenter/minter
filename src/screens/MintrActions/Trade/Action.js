@@ -24,14 +24,14 @@ const Action = ({
 	gasEstimateError,
 }) => {
 	const onBaseAmountChange = amount => {
-		console.log("got amount", amount, "baseSynth", baseSynth);
+		//console.log("got amount", amount, "baseSynth", baseSynth);
 		setBaseAmount(amount);
 		setQuoteAmount(Number(amount) ? Number(amount) * Number(baseSynth.rate) : '');
 	};
 
 	const onQuoteAmountChange = amount => {
-		console.log("got amount", amount, "baseSynth", baseSynth);
-		
+		//console.log("got amount", amount, "baseSynth", baseSynth);
+
 		setQuoteAmount(amount);
 		setBaseAmount(Number(amount) ? Number(amount) / Number(baseSynth.rate) : '');
 	};

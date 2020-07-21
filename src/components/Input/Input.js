@@ -7,7 +7,7 @@ import { PLarge } from '../Typography';
 import { withTranslation } from 'react-i18next';
 
 const getSynthList = (synths, search) => {
-	console.log(`getSynthList for ${search}`, synths); 
+	//console.log(`getSynthList for ${search}`, synths);
 	if (!search) return synths;
 	return synths.filter(synth => synth.name.toLowerCase().includes(search.toLowerCase()));
 };

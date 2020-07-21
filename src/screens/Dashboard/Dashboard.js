@@ -114,7 +114,7 @@ const getBalancePerAsset = (asset, { balances, prices, debtData, synthData }) =>
 			break;
 		case 'TRX':
 			balance = balances[asset.toLowerCase()];
-			console.log('TRX BALANCE', balance);
+			//console.log('TRX BALANCE', balance);
 			usdValue = balance * prices[asset.toLowerCase()];
 			break;
 		case 'Synths':

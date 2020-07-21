@@ -24,12 +24,12 @@ const UniPool = ({ goBack }) => {
 	} = useContext(Store);
 
 	const fetchAllowance = useCallback(async () => {
-		console.log({ snxJSConnector });
+		//console.log({ snxJSConnector });
 
 		if (!snxJSConnector.initialized) return;
 		const { uniswapstrxContract, unipoolstrxContract } = snxJSConnector;
 
-		console.log({ uniswapstrxContract, unipoolstrxContract });
+		//console.log({ uniswapstrxContract, unipoolstrxContract });
 		try {
 			setIsLoading(true);
 			const allowance = await uniswapstrxContract

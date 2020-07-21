@@ -19,7 +19,7 @@ const Action = ({
 	isFetchingGasLimit,
 	gasEstimateError,
 }) => {
-	console.log("amountAvailable", formatCurrency(amountAvailable))
+	//console.log("amountAvailable", formatCurrency(amountAvailable))
 	return (
 		<SlidePage>
 			<Container>
@@ -36,7 +36,6 @@ const Action = ({
 					<ErrorMessage message={gasEstimateError} />
 				</Top>
 				<Bottom>
-					
 					<ButtonPrimary
 						disabled={isFetchingGasLimit || gasEstimateError || !amountAvailable}
 						onClick={onWithdraw}

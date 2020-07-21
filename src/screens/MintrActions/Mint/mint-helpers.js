@@ -7,7 +7,7 @@ export function getStakingAmount({ issuanceRatio, mintAmount, OKSprice }) {
 }
 
 export function estimateCRatio({ OKSPrice, debtBalance, oksBalance, mintAmount }) {
-	console.log(OKSPrice, debtBalance, oksBalance, mintAmount);
+	//console.log(OKSPrice, debtBalance, oksBalance, mintAmount);
 	if (isNil(OKSPrice) || isNil(debtBalance) || isNil(oksBalance)) {
 		return 0;
 	}

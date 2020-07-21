@@ -12,7 +12,7 @@ let snxJSConnector = {
 		this.initialized = true;
 		contractSettings.tronWeb = window.tronWeb;
 		this.snxJS = new SynthetixJs(contractSettings);
-		console.log(contractSettings);
+		//console.log(contractSettings);
 
 		this.synths = this.snxJS.contractSettings.synths;
 		this.signer = this.snxJS.contractSettings.signer;
@@ -37,7 +37,7 @@ const connectToTronlink = async (networkId, networkName) => {
 			return;
 		}
 
-		console.log('connector', snxJSConnector);
+		//console.log('connector', snxJSConnector);
 
 		const accounts = await snxJSConnector.signer.getNextAddresses();
 		if (accounts && accounts.length > 0) {
@@ -157,7 +157,7 @@ export const setSigner = ({ type, networkId, derivationPath, _contracts }) => {
 	const signer = new snxJSConnector.signers[type](
 		getSignerConfig({ type, networkId, derivationPath })
 	);
-	console.log({ _contracts });
+	//console.log({ _contracts });
 	snxJSConnector.setContractSettings({
 		networkId,
 		signer,

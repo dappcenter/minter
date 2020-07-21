@@ -58,7 +58,7 @@ export default withTranslation()(({ t }) => {
 	*/
 	const migrate = async () => {
 		try {
-			console.log({ oldBalance });
+			//console.log({ oldBalance });
 			await oldUnipoolContract.withdraw(oldBalance).send();
 			await unipoolsethContract.stake(oldBalance).send();
 			setIsMigrationPending(true);
