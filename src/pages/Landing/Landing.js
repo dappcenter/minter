@@ -10,7 +10,12 @@ import { Store } from '../../store';
 import { updateCurrentPage } from '../../ducks/ui';
 import { updateWalletStatus } from '../../ducks/wallet';
 
-import { hasWeb3, hasTronLink, SUPPORTED_WALLETS, onMetamaskAccountChange } from '../../helpers/networkHelper';
+import {
+	hasWeb3,
+	hasTronLink,
+	SUPPORTED_WALLETS,
+	onMetamaskAccountChange,
+} from '../../helpers/networkHelper';
 import { ButtonPrimary, ButtonSecondary } from '../../components/Button';
 import { H1, H2, PMega, ButtonTertiaryLabel } from '../../components/Typography';
 import Logo from '../../components/Logo';
@@ -24,9 +29,7 @@ import './carousel.css';
 
 const SLIDE_COUNT = 4;
 
-console.log(snxJSConnector);
-
-const on//alletClick = ({ wallet, derivationPath }, dispatch) => {
+const onWalletClick = ({ wallet, derivationPath }, dispatch) => {
 	return async () => {
 		const walletStatus = await connectToWallet({ wallet, derivationPath });
 		updateWalletStatus({ ...walletStatus, availableWallets: [] }, dispatch);
@@ -125,7 +128,7 @@ const WalletButtons = () => {
 				const noTronLink = wallet === 'TronLink' && !hasTronLink();
 				return (
 					<Button
-						disabled={noTronLink || !window.tronWeb.defaultAddress.hex} 
+						disabled={noTronLink || !window.tronWeb.defaultAddress.hex}
 						key={wallet}
 						onClick={onWalletClick({ wallet, derivationPath }, dispatch)}
 					>
@@ -159,7 +162,7 @@ const Landing = ({ t }) => {
 					</LanguageButtonWrapper>
 				</Header>
 				<OnBoardingCarousel pageIndex={pageIndex} setPageIndex={setPageIndex} />
-				<ButtonRow> 
+				<ButtonRow>
 					<ButtonSecondary
 						onClick={() => setPageIndex(Math.max(pageIndex - 1, 0))}
 						height="56px"
@@ -182,12 +185,7 @@ const Landing = ({ t }) => {
 					<Link href="https://help.oikos.cash/hc/en-us" target="_blank">
 						<ButtonTertiaryLabel>{t('button.havingTrouble')}</ButtonTertiaryLabel>
 					</Link>
-					<Link
-						href={`#${
-							i18n.language === 'zh-CN' ? '_mandarin' : ''
-						}.pdf`}
-						target="_blank"
-					>
+					<Link href={`#${i18n.language === 'zh-CN' ? '_mandarin' : ''}.pdf`} target="_blank">
 						<ButtonTertiaryLabel>{t('button.whatIsOikos')}</ButtonTertiaryLabel>
 					</Link>
 				</BottomLinks>
