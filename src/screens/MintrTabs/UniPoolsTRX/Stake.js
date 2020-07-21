@@ -84,7 +84,7 @@ const Stake = ({ t, goBack }) => {
 
 	useEffect(() => {
 		if (!currentWallet) return;
-		const { uniswapContract, unipoolstrxContract } = snxJSConnector;
+		const { uniswapstrxContract, unipoolstrxContract } = snxJSConnector;
 		(async () => {
 			/*const res = await oldunipoolstrxContract.balanceOf(currentWallet).call();
 			if (res) {
