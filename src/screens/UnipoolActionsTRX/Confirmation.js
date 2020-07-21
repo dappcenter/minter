@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { withTranslation, Trans } from 'react-i18next';
 
@@ -8,8 +8,13 @@ import { ButtonTertiary } from '../../components/Button';
 import { PLarge, PageTitle, DataHeaderLarge, Subtext } from '../../components/Typography';
 import Spinner from '../../components/Spinner';
 import TransactionPriceIndicator from '../../components/TransactionPriceIndicator';
+import { initGA } from '../../helpers/google-analytics.js';
 
 const Confirmation = ({ t, onDestroy, walletType, amount, label }) => {
+	useEffect(() => {
+		initGA();
+	}, []);
+
 	return (
 		<SlidePage>
 			<Container>

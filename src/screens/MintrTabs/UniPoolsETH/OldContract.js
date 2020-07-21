@@ -29,7 +29,7 @@ const ButtonAction = styled(ButtonPrimary)`
 	}
 `;
 export default withTranslation()(({ t }) => {
-	const { unipoolsethContract, oldUnipoolContract } = snxJSConnector;
+	const { unipoolsethContract, oldUnipoolsethContract } = snxJSConnector;
 
 	// const [balances, setBalances] = useState(null);
 	// const [withdrawAmount, setWithdrawAmount] = useState('');
@@ -59,7 +59,7 @@ export default withTranslation()(({ t }) => {
 	const migrate = async () => {
 		try {
 			//console.log({ oldBalance });
-			await oldUnipoolContract.withdraw(oldBalance).send();
+			await oldUnipoolsethContract.withdraw(oldBalance).send();
 			await unipoolsethContract.stake(oldBalance).send();
 			setIsMigrationPending(true);
 		} catch (err) {
