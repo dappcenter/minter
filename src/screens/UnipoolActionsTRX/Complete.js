@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import styled from 'styled-components';
 import { withTranslation } from 'react-i18next';
 
@@ -7,8 +7,17 @@ import { formatCurrency } from '../../helpers/formatters';
 import { SlidePage } from '../../components/ScreenSlider';
 import { ButtonPrimary } from '../../components/Button';
 import { PLarge, PageTitle, DataHeaderLarge } from '../../components/Typography';
+import { initGA, GAevent } from '../../helpers/google-analytics.js';
 
+const finalize = () => {
+	//onDestroy();
+	GAevent('User', 'Stake sTRX', 'stakeSTRX');
+};
 const Success = ({ t, onDestroy, amount, label }) => {
+	useEffect(() => {
+		initGA();
+	}, []);
+	finalize();
 	return (
 		<Fragment>
 			<Top>

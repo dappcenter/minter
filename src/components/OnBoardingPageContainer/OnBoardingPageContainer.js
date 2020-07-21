@@ -16,11 +16,7 @@ const OnBoardingPageContainer = ({ t, children }) => {
 					<ButtonTertiary as="a" href="https://help.oikos.cash/hc/en-us" target="_blank">
 						{t('button.havingTrouble')}
 					</ButtonTertiary>
-					<ButtonTertiary
-						as="a"
-						href="#"
-						target="_blank"
-					>
+					<ButtonTertiary as="a" href="#" target="_blank">
 						{t('button.whatIsOikos')}
 					</ButtonTertiary>
 				</HeaderBlock>

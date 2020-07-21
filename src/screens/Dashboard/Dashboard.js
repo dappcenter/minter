@@ -282,7 +282,7 @@ const Dashboard = ({ t }) => {
 						>
 							<ButtonTertiaryLabel>{t('dashboard.buttons.synthetixDashboard')}</ButtonTertiaryLabel>
 						</Link>
-            */}
+						*/}
 					</Row>
 				</Container>
 			</Content>

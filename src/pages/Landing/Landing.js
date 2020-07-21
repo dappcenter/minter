@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { Carousel } from 'react-responsive-carousel';
 import { withTranslation, useTranslation } from 'react-i18next';
 import i18n from 'i18next';
-
 import snxJSConnector, { connectToWallet } from '../../helpers/snxJSConnector';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import { Store } from '../../store';
 import { updateCurrentPage } from '../../ducks/ui';
@@ -18,6 +18,8 @@ import {
 } from '../../helpers/networkHelper';
 import { ButtonPrimary, ButtonSecondary } from '../../components/Button';
 import { H1, H2, PMega, ButtonTertiaryLabel } from '../../components/Typography';
+import GetOKS from '../../components/GetOKS';
+
 import Logo from '../../components/Logo';
 
 import { Globe } from '../../components/Icons';
@@ -144,7 +146,7 @@ const WalletButtons = () => {
 const Landing = ({ t }) => {
 	const [pageIndex, setPageIndex] = useState(0);
 	const [flagDropdownIsVisible, setFlagVisibility] = useState(false);
-
+	console.log({ GetOKS });
 	return (
 		<LandingPageContainer>
 			<OnboardingContainer>
@@ -161,6 +163,7 @@ const Landing = ({ t }) => {
 						/>
 					</LanguageButtonWrapper>
 				</Header>
+				<GetOKS></GetOKS>
 				<OnBoardingCarousel pageIndex={pageIndex} setPageIndex={setPageIndex} />
 				<ButtonRow>
 					<ButtonSecondary

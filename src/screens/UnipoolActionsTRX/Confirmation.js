@@ -8,18 +8,14 @@ import { ButtonTertiary } from '../../components/Button';
 import { PLarge, PageTitle, DataHeaderLarge, Subtext } from '../../components/Typography';
 import Spinner from '../../components/Spinner';
 import TransactionPriceIndicator from '../../components/TransactionPriceIndicator';
-import { initGA } from '../../helpers/google-analytics.js';
 
 const Confirmation = ({ t, onDestroy, walletType, amount, label }) => {
-	useEffect(() => {
-		initGA();
-	}, []);
-
+	console.log({ msg: 'fired event' });
 	return (
 		<SlidePage>
 			<Container>
 				<Navigation>
-					<ButtonTertiary onClick={onDestroy}>{t('button.navigation.cancel')}</ButtonTertiary>
+					<ButtonTertiary onClick={onDestroy}>{t('button.navigation.cancel')} </ButtonTertiary>
 				</Navigation>
 				<Top>
 					<Intro>
